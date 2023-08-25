@@ -1,7 +1,12 @@
+import GitHubLogo from '../assets/github.png';
+
 function Footer() {
     return(
         <div>
-            <h3>Made by Inês and Jan</h3>
+            <p>Made by:</p>
+            <a href='https://github.com/InesAlmeida-91'>Inês Almeida <img src={GitHubLogo} alt="GitHubLogo" style={{width: '2rem'}}></img></a>
+            <br/>
+            <a href='https://github.com/SchenRinan'>Jan Schnell <img src={GitHubLogo} alt="GitHubLogo" style={{width: '2rem'}}></img></a>
         </div>
     )
 }

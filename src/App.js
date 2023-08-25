@@ -7,6 +7,8 @@ import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
 // import ErrorPage from './pages/ErrorPage';
 import { Routes, Route } from 'react-router-dom';
+import IsPrivate from './components/IsPrivate';
+import IsAnon from './components/IsAnon';
 import './App.css';
 
 function App() {
@@ -16,10 +18,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/usertips" element={<UserTips />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/usertips" element={<IsAnon> <UserTips /> </IsAnon>} />
+        <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
+        <Route path="/login" element={ <IsAnon> <LoginPage /> </IsAnon>} />
+        <Route path="/profile" element={ <IsPrivate> <ProfilePage /> </IsPrivate>} />
       {/* <Route path="*" element={ <ErrorPage /> } />   */}  
       </Routes>
 

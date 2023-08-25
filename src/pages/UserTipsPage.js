@@ -1,7 +1,7 @@
 function UserTips() {
     return(
         <div>
-            <h1>Welcome to KidsConnect User Tips!</h1>
+            <h1>KidsConnect User Tips!</h1>
             <hr />
             <p> Discover Activities: Browse through a variety of activities suitable for children of different ages. Use the filtering options to find activities that match your preferences and needs.
                 <br />
