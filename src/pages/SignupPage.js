@@ -29,7 +29,6 @@ function SignupPage(props) {
     
     return(
         <div>
-            <h1>Welcome to KidsConnect!</h1>
             <h2>Sign up</h2>
                 <form onSubmit={handleSubmit}>
                     <div>

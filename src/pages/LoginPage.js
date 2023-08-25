@@ -30,7 +30,6 @@ function LoginPage() {
     }
     return(
         <div>
-            <h1>Welcome back to KidsConnect!</h1>
             <h2>Log in</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
