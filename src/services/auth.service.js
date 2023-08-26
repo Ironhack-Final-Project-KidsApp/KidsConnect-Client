@@ -28,6 +28,10 @@ class AuthService {
     verifyToken = () => {
         return this.api.get('/auth/verify');
       };
+
+    uploadImage = (file) => {
+        return this.api.post("/auth/upload", file);
+      };
 }
 
 const authService = new AuthService();
