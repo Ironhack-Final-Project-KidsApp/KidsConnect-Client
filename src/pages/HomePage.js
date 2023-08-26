@@ -1,9 +1,8 @@
-//if the user its not logged in just display title/small description and some carrousel with some images
-//if the user its logged in display the same and a searchbar filters and all activities
 
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import CarouselHome from "../components/CarouselHome";
+import AllActivities from "./AllActivities";
 
 function HomePage() {
   const authContext = useContext(AuthContext);
@@ -16,8 +15,7 @@ function HomePage() {
         <div>
         <h3>Welcome {user.name}</h3>
         <br/>
-          <input type="text" placeholder="Search activities..." />
-          {/* Add filters and activity list components here */}
+            <AllActivities />
         </div>
       ) : (
         <div>
