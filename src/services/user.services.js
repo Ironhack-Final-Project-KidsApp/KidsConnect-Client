@@ -1,6 +1,6 @@
 import axios from "axios";
 
-class AuthService {
+class UserService {
     constructor() {
         this.api = axios.create({
             baseURL: process.env.REACT_APP_SERVER_URL || 'https://kidsconnect.cyclic.cloud'
@@ -17,27 +17,20 @@ class AuthService {
           });
     }
 
-    login = requestBody => {
-        return this.api.post('/auth/login', requestBody);
-      };
-     
-    signup = requestBody => {
-        return this.api.post('/auth/signup', requestBody);
-      };
-     
-    verifyToken = () => {
-        return this.api.get('/auth/verify');
-      };
-
     uploadImage = (file) => {
-        return this.api.post("/auth/upload", file);
+        return this.api.post("/upload", file);
       };
     
     updateUser = (updatedUser) => {
-      return this.api.put("/auth/users", updatedUser);
+      return this.api.put("/user-image", updatedUser);
     }
+
+    getUser = (id) => {
+        return this.api.get(`/user/${id}`);
+    }
+
 }
 
-const authService = new AuthService();
+const userService = new UserService();
 
-export default authService;
+export default userService;

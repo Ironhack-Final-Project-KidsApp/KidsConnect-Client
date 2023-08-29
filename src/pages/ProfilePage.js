@@ -1,9 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/auth.context';
-import { useNavigate } from "react-router-dom";
-import avatarImage from '../assets/avatar-image.png'
-import authService from '../services/auth.service';
-//create in the profile a list of the users created activities?
+//import avatarImage from '../assets/avatar-image.png'
+import userService from '../services/user.services';
 
 function ProfilePage() {
     const authContext = useContext(AuthContext);
@@ -11,37 +9,43 @@ function ProfilePage() {
     const [userImage, setUserImage] = useState("");
     const [showUpload, setShowUpload] = useState(false);
 
-    const navigate = useNavigate();
-
     const handleFileUpload = (e) => {
-        // console.log("The file to be uploaded is: ", e.target.files[0]);
+        console.log("The file to be uploaded is: ", e.target.files[0]);
         const uploadData = new FormData();
+     
         uploadData.append("image", e.target.files[0]);
      
-        authService
+        userService
           .uploadImage(uploadData)
           .then(response => {
-            // console.log("response is: ", response);
-            setUserImage(response.fileUrl);
+            console.log("response is: ", response);
+            setUserImage(response.data.fileUrl);
           })
           .catch(err => console.log("Error while uploading the file: ", err));
       };
-     
+
       const handleSubmit = (e) => {
         e.preventDefault();
-       
-        const uploadData = new FormData();
-        uploadData.append("image", userImage);
-        
-        authService.uploadImage(uploadData)
+                
+        userService
+          .updateUser({id: user._id, image: userImage})
           .then(response => {
-            setUserImage(response.fileUrl);
-            setShowUpload(false);
+            console.log("response: ", response);
+            setUserImage("")
           })
-          .catch(err => console.log("Error while uploading the file: ", err));
+          .catch(err => console.log("Error: ", err));
       };
 
+      useEffect(() => {
+        userService.getUser(user._id)
+          .then(response => {
+            console.log("response is:", response.data)
+            user.image = response.data
+            setUserImage(user.image)
+          })
+      }, [user])
 
+      console.log("User is:", user)
     return(
         <div>
             <h1>{user.name} Profile</h1>
@@ -49,12 +53,9 @@ function ProfilePage() {
             <p>Email: {user.email}</p>
 
             <p>Profile Image:</p>            
-                {user.image ? (
-                <img src={user.image} alt="profile_image" style={{ width: '50px', height: '50px', borderRadius: '75%' }} />
-                ) : (
-                <img src={avatarImage} alt="profile_image" style={{ width: '50px', height: '50px', borderRadius: '75%' }} />
-                )}
-                
+                <img src={userImage} alt="profile_image" style={{ width: '50px', height: '50px', borderRadius: '75%' }} />
+               
+            <br />
             {!showUpload &&
                 <button onClick={()=> setShowUpload(!showUpload)}>Change profile image</button>
             }
