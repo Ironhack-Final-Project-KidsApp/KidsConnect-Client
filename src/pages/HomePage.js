@@ -1,12 +1,27 @@
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import CarouselHome from "../components/CarouselHome";
-import AllActivities from "./AllActivities";
+import SearchBar from "../components/SearchBar";
+import activityService from "../services/activity.services";
+
 
 function HomePage() {
   const authContext = useContext(AuthContext);
   const { isLoggedIn, user } = authContext;
+
+  const [activitiesList, setActivitiesList] = useState([]);
+
+  useEffect(() => {
+    activityService
+      .getAllActivities()
+      .then((response) => {
+        setActivitiesList(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+}, []);
 
   return (
     <div>
@@ -15,7 +30,7 @@ function HomePage() {
         <div>
         <h3>Welcome {user.name}</h3>
         <br/>
-            <AllActivities />
+        <SearchBar activitiesList={activitiesList} />
         </div>
       ) : (
         <div>
