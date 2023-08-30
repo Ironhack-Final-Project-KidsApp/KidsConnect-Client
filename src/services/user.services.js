@@ -3,7 +3,7 @@ import axios from "axios";
 class UserService {
     constructor() {
         this.api = axios.create({
-            baseURL: process.env.REACT_APP_SERVER_URL || 'https://kidsconnect.cyclic.cloud'
+            baseURL: process.env.REACT_APP_API_URL || 'https://kidsconnect.cyclic.cloud'
         });
 
         this.api.interceptors.request.use(config => {
@@ -27,6 +27,10 @@ class UserService {
 
     getUser = (id) => {
         return this.api.get(`/user/${id}`);
+    }
+
+    getActivity = id => {
+      return this.api.get(`/user/${id}/activity`)
     }
 
 }

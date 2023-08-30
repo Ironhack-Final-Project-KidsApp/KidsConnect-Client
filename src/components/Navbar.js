@@ -6,7 +6,7 @@ import logo from '../assets/logo.png';
 //check module 3 week 3 to use the is active feature from navlink
 
 function Navbar() {
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
 
   return (
     <div>
@@ -18,7 +18,7 @@ function Navbar() {
 
           {isLoggedIn && (
             <div>
-              <NavLink to="/profile">Profile</NavLink>
+              <NavLink to={`/profile/${user._id}`}>Profile</NavLink>
               <br/>
               <button onClick={logOutUser}>Log Out</button>
             </div> 
