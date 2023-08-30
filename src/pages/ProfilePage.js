@@ -8,6 +8,8 @@ function ProfilePage() {
     const { user } = authContext;
     const [userImage, setUserImage] = useState("");
     const [showUpload, setShowUpload] = useState(false);
+    const [userActivity, setActivity] = useState([])
+    const [loading, setLoading] = useState(true);
 
     const handleFileUpload = (e) => {
         console.log("The file to be uploaded is: ", e.target.files[0]);
@@ -39,15 +41,23 @@ function ProfilePage() {
       useEffect(() => {
         userService.getUser(user._id)
           .then(response => {
-            console.log("response is:", response.data)
-            user.image = response.data
+            // console.log("response is:", response.data)
+            user.image = response.data.image
             setUserImage(user.image)
-          })
+          });
+        userService.getActivity(user._id)
+          .then(response => {
+            // console.log("response is:", response.data)
+            setActivity(response.data)
+          });
+        setLoading(false)
       }, [user])
 
-      console.log("User is:", user)
+      // console.log("User is:", user)
     return(
         <div>
+          {loading && 'Data being gathered'}
+          {!loading && <>
             <h1>{user.name} Profile</h1>
 
             <p>Email: {user.email}</p>
@@ -66,6 +76,15 @@ function ProfilePage() {
                         <button type="submit">Save new profile image</button>
                     </form>)
             }
+            <h1>{user.name} Activities</h1>
+            {userActivity && userActivity.map(item => {
+              return <div key={item._id}>
+                <h1>{item.title}</h1>
+                <p>{item.description}</p>
+                </div>
+            })}
+          </>}
+          
         </div>
     )
 }
