@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import activityService from "../services/activity.services";
-import SearchBar from "../components/SearchBar";
+// import SearchBar from "../components/SearchBar";
 import ActivitiesList from "../components/ActivityList";
 
 function AllActivities() {
