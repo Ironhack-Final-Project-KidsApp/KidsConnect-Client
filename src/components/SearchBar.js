@@ -10,7 +10,7 @@ function SearchBar({activitiesList}) {
 
     const handleSearchInput = (e) => {
         const searchText = e.target.value.toLowerCase();
-        const filtered  = searchItem.filter((activity ) =>
+        const filtered  = activitiesList.filter((activity) =>
         activity.name.toLowerCase().includes(searchText)
         );
         setFilteredActivities(filtered);
@@ -18,9 +18,13 @@ function SearchBar({activitiesList}) {
       }; 
 
     return(
-        <div className="input-wrapper">
-            <FaSearch id='search-icon'/>
-            <input placeholder='Search for activities...' value={searchItem} onChange={handleSearchInput}/>
+
+        <div>
+            <div className="input-wrapper">
+                <FaSearch id='search-icon'/>
+                <input placeholder='Search for activities...' value={searchItem} onChange={handleSearchInput}/>
+                
+            </div>
             <AllActivitiesList activitiesList={searchItem ? filteredActivities : activitiesList} />
         </div>
     )
