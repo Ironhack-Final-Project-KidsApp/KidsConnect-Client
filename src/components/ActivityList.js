@@ -16,7 +16,7 @@ function ActivitiesList({ activitiesList, isLoading }) {
                 <h1>{activity.name}</h1>
               </Link>
               <h2>{activity.title}</h2>
-              <p>Created by: {activity.author}</p>
+              <p>Created by: {activity.author.name}</p>
             </div>
           ))}
         </div>
