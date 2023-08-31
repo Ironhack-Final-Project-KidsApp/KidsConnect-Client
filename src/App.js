@@ -6,11 +6,13 @@ import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
 import CreateActivityPage from './pages/CreateActivityPage';
+import ActivitiesDetailsPage from './pages/ActivitiesDetailsPage';
 // import ErrorPage from './pages/ErrorPage';
 import { Routes, Route } from 'react-router-dom';
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
 import './App.css';
+
 
 
 function App() {
@@ -20,11 +22,12 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/usertips" element={<IsAnon> <UserTips /> </IsAnon>} />
+        <Route path="/usertips" element={<UserTips />} />
         <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
         <Route path="/login" element={ <IsAnon> <LoginPage /> </IsAnon>} />
-        <Route path="/profile/:id" element={ <IsPrivate> <ProfilePage /> </IsPrivate>} />
+        <Route path="/profile/:idprofile" element={ <IsPrivate> <ProfilePage /> </IsPrivate>} />
         <Route path="/create-activity" element={ <IsPrivate> <CreateActivityPage /> </IsPrivate>} />
+        <Route path='/activity/:idactivity' element={<ActivitiesDetailsPage/>}/>
       {/* <Route path="*" element={ <ErrorPage /> } />   */}  
       </Routes>
 
