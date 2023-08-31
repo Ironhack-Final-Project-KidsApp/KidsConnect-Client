@@ -33,7 +33,7 @@ function ProfilePage() {
           .updateUser({id: user._id, image: userImage})
           .then(response => {
             console.log("response: ", response);
-            setUserImage("")
+            // setUserImage("")
           })
           .catch(err => console.log("Error: ", err));
       };
