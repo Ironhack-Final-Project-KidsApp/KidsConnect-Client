@@ -24,7 +24,7 @@ function AllActivitiesList() {
   
     const handleSearch = (searchTerm) => {
       const filteredActivities = activitiesList.filter((activity) =>
-        activity.name.toLowerCase().includes(searchTerm.toLowerCase())
+        activity.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
       console.log("Filtered activities:", filteredActivities);
       setSearchResults(filteredActivities);

@@ -17,6 +17,8 @@ const CreateActivityPage = () => {
     const [event, setEvent] = useState('');
     const [error, setError] = useState(null)
 
+    console.log('User is:', user)
+
     const handleSubmit = e =>{
         e.preventDefault();
         activityService.createActivity({

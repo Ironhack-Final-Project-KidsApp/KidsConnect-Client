@@ -79,11 +79,9 @@ function ProfilePage() {
                   <button type="submit">Save new profile image</button>
               </form>)
       }
-      <h1>{user.name} Activities</h1>
+      <h1>{user.name}'s Activities</h1>
       {userActivity && userActivity.map(item => {
-        return <ActivityCard 
-          activity={item}
-        />
+        return <ActivityCard key={item._id} activity={item} />
       })}
       
     </div>
