@@ -82,7 +82,7 @@ function ProfilePage() {
       <h1>{user.name} Activities</h1>
       {userActivity && userActivity.map(item => {
         return <ActivityCard 
-          item={item}
+          activity={item}
         />
       })}
       
