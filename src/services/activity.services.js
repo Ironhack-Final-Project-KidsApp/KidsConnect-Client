@@ -36,6 +36,14 @@ class ActivityServices {
   deleteActivity = (id) => {
     return this.api.delete(`/activity/${id}`);
   };
+
+  toggleFavorite = (id) => {
+    return this.api.post(`/activity/${id}/favourites`);
+  }
+
+  getfavouritesByUser = (userId) => {
+    return this.api.get(`/activity/favorites/${userId}`)
+  }
 }
 
 const activityService = new ActivityServices();
