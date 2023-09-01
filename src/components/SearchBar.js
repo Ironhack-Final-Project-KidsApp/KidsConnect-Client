@@ -19,8 +19,9 @@ function SearchBar({ onSearch }) {
       <form className="input-wrapper" onSubmit={handleSubmit}>
         <input placeholder="Search for activities..." type="text"
           value={searchTerm} onChange={handleSearchChange} />
+          <button type="submit"><FaSearch id='search-icon'/></button>
       </form>
-      <button type="submit"><FaSearch id='search-icon'/></button>
+      
     </div>
   );
 }

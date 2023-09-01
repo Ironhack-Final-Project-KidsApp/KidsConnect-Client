@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-/* ines code - function ActivityCard({ activity }) {
+function ActivityCard({ activity }) {
   return (
     <div key={activity._id}>
       <img src={activity.image} alt="activity-img" />
@@ -12,14 +12,14 @@ import { Link } from "react-router-dom";
       <p>Created by: {activity.author}</p>
     </div>
   );
-} */
+} 
 
 
-const ActivityCard = (props) => {
+/* const ActivityCard = (props) => {
     return (
         <div><Link to={`/activity/${props.item._id}`}>{props.item.title}</Link></div>
     );
-}
+} */
  
 
 export default ActivityCard;
