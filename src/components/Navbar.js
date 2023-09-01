@@ -20,6 +20,8 @@ function Navbar() {
             <div>
               <NavLink to={`/profile/${user._id}`}>Profile</NavLink>
               <br/>
+              <NavLink to={`/create-activity`}>Create Activity</NavLink>
+              <br />
               <button onClick={logOutUser}>Log Out</button>
             </div> 
           )}

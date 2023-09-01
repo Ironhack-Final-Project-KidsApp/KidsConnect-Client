@@ -1,29 +1,28 @@
+import { useState } from "react";
 import { FaSearch } from 'react-icons/fa'
-import './SearchBar.css';
-import { useState } from 'react';
-import AllActivitiesList from '../pages/AllActivitiesList';
+import './SearchBar.css'
 
-function SearchBar({activitiesList}) {
-    const [searchItem, setSearchItem] = useState("");
-    const [filteredActivities, setFilteredActivities] = useState([]);
+function SearchBar({ onSearch }) {
+  const [searchTerm, setSearchTerm] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch(searchTerm);
+  };
 
-    const handleSearchInput = (e) => {
-        const searchText = e.target.value.toLowerCase();
-        const filtered  = searchItem.filter((activity ) =>
-        activity.name.toLowerCase().includes(searchText)
-        );
-        setFilteredActivities(filtered);
-        setSearchItem(searchText);
-      }; 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
-    return(
-        <div className="input-wrapper">
-            <FaSearch id='search-icon'/>
-            <input placeholder='Search for activities...' value={searchItem} onChange={handleSearchInput}/>
-            <AllActivitiesList activitiesList={searchItem ? filteredActivities : activitiesList} />
-        </div>
-    )
+  return (
+    <div>
+      <form className="input-wrapper" onSubmit={handleSubmit}>
+        <input placeholder="Search for activities..." type="text"
+          value={searchTerm} onChange={handleSearchChange} />
+      </form>
+      <button type="submit"><FaSearch id='search-icon'/></button>
+    </div>
+  );
 }
 
 export default SearchBar;
