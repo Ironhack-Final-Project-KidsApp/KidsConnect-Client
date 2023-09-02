@@ -12,7 +12,6 @@ function AllActivitiesList() {
       activityService
         .getAllActivities()
         .then((response) => {
-          console.log('reponse.data is:', typeof response.data)
           setActivitiesList(response.data);
           setSearchResults(response.data);
           setIsLoading(true);
@@ -26,9 +25,10 @@ function AllActivitiesList() {
       const filteredActivities = activitiesList.filter((activity) =>
         activity.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
-      console.log("Filtered activities:", filteredActivities);
-      setSearchResults(filteredActivities);
+      const updatedActivities = searchTerm === "" ? activitiesList : filteredActivities;
+      setSearchResults(updatedActivities);
     };
+
   
     if (!isLoading) {
       return <p>Loading...</p>;
@@ -36,7 +36,7 @@ function AllActivitiesList() {
   
     return (
       <div>
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={(e) => handleSearch(e.target.value)} />
   
         {searchResults.length === 0 ? (
         <p>No activities found</p>

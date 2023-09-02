@@ -7,19 +7,19 @@ function SearchBar({ onSearch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(searchTerm);
   };
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
+    onSearch(searchTerm);
   };
 
   return (
     <div>
       <form className="input-wrapper" onSubmit={handleSubmit}>
+        <FaSearch id='search-icon'/>
         <input placeholder="Search for activities..." type="text"
-          value={searchTerm} onChange={handleSearchChange} />
-          <button type="submit"><FaSearch id='search-icon'/></button>
+          value={searchTerm} onChange={(e) => handleSearchChange(e)} />
       </form>
       
     </div>

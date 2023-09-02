@@ -8,7 +8,8 @@ const ActivitiesDetailsPage = () => {
     const [activity, setActivity] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
 
-    
+    console.log("idactivity:", idactivity)
+
     useEffect(()=>{
         activityService
             .getActivity(idactivity)
@@ -33,11 +34,11 @@ const ActivitiesDetailsPage = () => {
         <>
           <img src={activity?.image} alt="activity-img" />
           <h1>{activity?.title}</h1>
-          <p>{activity?.description}</p>
-          <p>{activity?.stroller}</p>
-          <p>{activity?.ageMin}</p>
-          <p>{activity?.ageMax}</p>
-          <p>{activity?.location}</p>
+          <p>Description:{activity?.description}</p>
+          <p>Stroller:{activity?.stroller}</p>
+          <p>Min. Age:{activity?.ageMin}</p>
+          <p>Max. Age:{activity?.ageMax}</p>
+          <p>Location: {activity?.location}</p>
           {isFavorite ? (
             <button onClick={handleToggleFavorite}></button>
           ) : (

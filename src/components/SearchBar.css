@@ -23,6 +23,11 @@ input:focus {
     outline: none;
 }
 
-#search-icon {
-    color: royalblue;
+button {
+    background-color: transparent;
+    border-style: none;
+}
+
+button:focus {
+    outline: none;
 }
