@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
 import activityService from "../services/activity.services";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import userService from "../services/user.services";
+import { AuthContext } from '../context/auth.context';
 
 const ActivitiesDetailsPage = () => {
+    const authContext = useContext(AuthContext);
+    const { user } = authContext;
     const params = useParams();
     const {idactivity} = params;
     const [activity, setActivity] = useState(null);
@@ -15,14 +18,14 @@ const ActivitiesDetailsPage = () => {
         activityService
             .getActivity(idactivity)
             .then(response => setActivity(response.data));
-        activityService
+          userService
             .toggleFavorite(idactivity)
             .then(favourite => setIsFavorite(favourite));
     },[idactivity])
     
     const handleToggleFavorite = async () => {
         try {
-          const response = await userService.toggleFavorite(idactivity);
+          const response = await userService.toggleFavorite(user._id, idactivity);
           setIsFavorite(response.data.isFavorite);
         } catch (error) {
           console.error('Error in the favorite status:', error);

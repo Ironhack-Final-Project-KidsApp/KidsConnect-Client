@@ -36,8 +36,8 @@ class UserService {
       return this.api.get(`/user/favorites/${id}`)
     }
     
-    toggleFavorite = (id) => {
-    return this.api.post(`/user/${id}/addfavorite`);
+    toggleFavorite = (id, activityId) => {
+    return this.api.post(`/user/${id}/addfavorite/${activityId}`);
   }
 
 }
