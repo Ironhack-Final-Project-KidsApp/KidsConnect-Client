@@ -32,6 +32,15 @@ class UserService {
     getActivity = id => {
       return this.api.get(`/user/${id}/activity`)
     }
+    getUsersFavourites = (userId) => {
+      return this.api.get(`/activity/favorites/${userId}`)
+    }
+    
+  toggleFavorite = (id) => {
+    return this.api.post(`/activity/${id}/favorite`);
+  }
+
+  
 
 }
 
