@@ -18,7 +18,7 @@ class UserService {
     }
 
     uploadImage = (file) => {
-        return this.api.post("/upload", file);
+        return this.api.post('/upload', file);
       };
     
     updateUser = (updatedUser) => {
@@ -32,15 +32,13 @@ class UserService {
     getActivity = id => {
       return this.api.get(`/user/${id}/activity`)
     }
-    getUsersFavourites = (userId) => {
-      return this.api.get(`/activity/favorites/${userId}`)
+    getUsersFavourites = (id) => {
+      return this.api.get(`/user/favorites/${id}`)
     }
     
-  toggleFavorite = (id) => {
-    return this.api.post(`/activity/${id}/favorite`);
+    toggleFavorite = (id) => {
+    return this.api.post(`/user/${id}/addfavorite`);
   }
-
-  
 
 }
 

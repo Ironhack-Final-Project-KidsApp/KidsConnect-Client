@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import activityService from "../services/activity.services";
 import { useEffect, useState } from "react";
+import userService from "../services/user.services";
 
 const ActivitiesDetailsPage = () => {
     const params = useParams();
@@ -21,10 +22,10 @@ const ActivitiesDetailsPage = () => {
     
     const handleToggleFavorite = async () => {
         try {
-          const response = await activityService.toggleFavorite(idactivity);
+          const response = await userService.toggleFavorite(idactivity);
           setIsFavorite(response.data.isFavorite);
         } catch (error) {
-          console.error("Error toggling favorite status:", error);
+          console.error('Error in the favorite status:', error);
         }
       };
 
