@@ -9,7 +9,7 @@ function ProfilePage() {
   const { user } = authContext;
   const [userImage, setUserImage] = useState(null);
   const [showUpload, setShowUpload] = useState(false);
-  const [userActivity, setActivity] = useState([]);
+  const [userActivity, setActivity] = useState(null);
   const [errorMessage, setErrorMessage] = useState(undefined);
   // const [loading, setLoading] = useState(true);
 
@@ -80,9 +80,13 @@ function ProfilePage() {
               </form>)
       }
       <h1>{user.name}'s Activities</h1>
-      {userActivity && userActivity.map(item => {
+      {!userActivity && <div>Loading</div>}
+      { userActivity.length > 0 ? userActivity.map(item => {
         return <ActivityCard key={item._id} activity={item} />
-      })}
+      })
+      :
+      <div>Your created activities go here.</div>
+      }
       
     </div>
   )

@@ -5,7 +5,7 @@ import ActivityCard from "../components/ActivityCard";
   
 function AllActivitiesList() {
     const [activitiesList, setActivitiesList] = useState([]);
-    // const [searchResults, setSearchResults] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
   
     useEffect(() => {
@@ -13,7 +13,7 @@ function AllActivitiesList() {
         .getAllActivities()
         .then((response) => {
           setActivitiesList(response.data);
-          // setSearchResults(response.data);
+          setSearchResults(response.data);
           setIsLoading(true);
         })
         .catch((error) => {
@@ -21,14 +21,13 @@ function AllActivitiesList() {
         });
     }, []);
   
-    // MOVED INSIDE SEARCHBAR
-    // const handleSearch = (searchTerm) => {
-    //   const filteredActivities = activitiesList.filter((activity) =>
-    //     activity.title.toLowerCase().includes(searchTerm.toLowerCase())
-    //   );
-    //   const updatedActivities = searchTerm === "" ? activitiesList : filteredActivities;
-    //   setSearchResults(updatedActivities);
-    // };
+    const handleSearch = (searchTerm) => {
+      const filteredActivities = activitiesList.filter((activity) =>
+        activity.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      const updatedActivities = searchTerm === "" ? activitiesList : filteredActivities;
+      setSearchResults(updatedActivities);
+    };
 
   
     if (!isLoading) {
@@ -37,13 +36,13 @@ function AllActivitiesList() {
   
     return (
       <div>
-        <SearchBar activitiesList={activitiesList} setActivitiesList={setActivitiesList} />
+        <SearchBar onSearch={(e) => handleSearch(e.target.value)} />
   
-        {activitiesList.length === 0 ? (
+        {searchResults.length === 0 ? (
         <p>No activities found</p>
       ) : (
         <div>
-          {activitiesList.map(activity => (
+          {searchResults.map((activity) => (
             <ActivityCard key={activity._id} activity={activity} />
           ))}
         </div>

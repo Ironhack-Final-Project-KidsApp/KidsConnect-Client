@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import { useContext } from "react";                   
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useContext } from "react";      
 import { AuthContext } from "../context/auth.context"
 import logo from '../assets/logo.png';
 
@@ -7,6 +7,12 @@ import logo from '../assets/logo.png';
 
 function Navbar() {
   const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logOutUser();
+    navigate("/");
+  };
 
   return (
     <div>
@@ -22,7 +28,7 @@ function Navbar() {
               <br/>
               <NavLink to={`/create-activity`}>Create Activity</NavLink>
               <br />
-              <button onClick={logOutUser}>Log Out</button>
+              <button onClick={handleLogout}>Log Out</button>
             </div> 
           )}
           

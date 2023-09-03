@@ -33,13 +33,17 @@ class UserService {
       return this.api.get(`/user/${id}/activity`);
     }
 
-    getUsersFavourites = (id) => {
-      return this.api.get(`/user/${id}/favorites`);
+    getUsersFavorites = (userId) => {
+      return this.api.get(`/user/${userId}/favorites`);
     }
     
-    toggleFavorite = (activityId) => {
-    return this.api.post(`/user/${activityId}/addfavorite`);
-  }
+    addFavoriteActivity = (activityId) => {
+      return this.api.post(`/user/${activityId}/addfavorite`);
+    }
+
+    removeFavoriteActivity = (activityId) => {
+      return this.api.post(`/user/${activityId}/removefavorite`);
+    }
 
 }
 
