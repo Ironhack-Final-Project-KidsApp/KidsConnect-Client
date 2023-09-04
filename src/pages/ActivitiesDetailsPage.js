@@ -7,16 +7,16 @@ import { AuthContext } from '../context/auth.context';
 const ActivitiesDetailsPage = () => {
     const authContext = useContext(AuthContext);
     const { user } = authContext;
-    const { idActivity } = useParams();
+    const { idactivity } = useParams();
     const [activity, setActivity] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
 
     console.log('user is:', user)
-    console.log('activity is:', idActivity)
+    console.log('activity is:', idactivity)
     
     //fetch activity details - done
     useEffect(() => {
-      activityService.getActivity(idActivity)
+      activityService.getActivity(idactivity)
       .then((response) => {
         console.log(response.data)
         setActivity(response.data)
@@ -24,7 +24,7 @@ const ActivitiesDetailsPage = () => {
       .catch((error) => {
         console.log(error);
       });
-    }, [idActivity])
+    }, [idactivity])
 
     if (!activity) {
       return <p>Loading...</p>;
@@ -34,11 +34,11 @@ const ActivitiesDetailsPage = () => {
     const handleFavoriteButton = () => {
       try {
         if (isFavorite) {
-          userService.removeFavoriteActivity(idActivity)
+          userService.removeFavoriteActivity(idactivity)
             .then(() => setIsFavorite(false))
             .catch((err) => console.error(err));
         } else {
-          userService.addFavoriteActivity(idActivity)
+          userService.addFavoriteActivity(idactivity)
             .then(() => setIsFavorite(true))
             .catch((err) => console.error(err));
         }

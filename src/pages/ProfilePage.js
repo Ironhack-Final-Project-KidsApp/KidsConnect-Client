@@ -55,7 +55,7 @@ function ProfilePage() {
         setActivity(response.data)
       })
       .catch((err) => {const errorMessage = err?.response?.data?.message ?? 'Internal error'; setErrorMessage(errorMessage)});
-  }, [user])
+  }, [user._id])
 
     // console.log("User is:", user)
   return(
@@ -81,7 +81,7 @@ function ProfilePage() {
       }
       <h1>{user.name}'s Activities</h1>
       {!userActivity && <div>Loading</div>}
-      { userActivity.length > 0 ? userActivity.map(item => {
+      { userActivity && userActivity.length > 0 ? userActivity.map(item => {
         return <ActivityCard key={item._id} activity={item} />
       })
       :
