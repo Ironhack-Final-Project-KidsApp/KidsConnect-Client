@@ -42,7 +42,7 @@ class UserService {
     }
 
     removeFavoriteActivity = (activityId) => {
-      return this.api.post(`/user/${activityId}/removefavorite`);
+      return this.api.delete(`/user/${activityId}/removefavorite`);
     }
 
 }

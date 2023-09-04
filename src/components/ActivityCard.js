@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import FavoriteButton from "./FavoriteButton";
 
 function ActivityCard({ activity }) {
 
@@ -10,6 +11,7 @@ function ActivityCard({ activity }) {
       </Link>
      {/* { console.log('author:', activity.author)} */}
       <p>Created by: {activity?.author?.name}</p>
+      <FavoriteButton idactivity={activity?._id} />
     </div>
   );
 } 

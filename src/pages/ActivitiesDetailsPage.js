@@ -1,20 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
-import userService from '../services/user.services';
+import { useEffect, useState } from "react";
 import activityService from '../services/activity.services';
-import { AuthContext } from '../context/auth.context';
+import FavoriteButton from "../components/FavoriteButton";
 
 const ActivitiesDetailsPage = () => {
-    const authContext = useContext(AuthContext);
-    const { user } = authContext;
     const { idactivity } = useParams();
     const [activity, setActivity] = useState(null);
-    const [isFavorite, setIsFavorite] = useState(false);
-
-    console.log('user is:', user)
-    console.log('activity is:', idactivity)
     
-    //fetch activity details - done
     useEffect(() => {
       activityService.getActivity(idactivity)
       .then((response) => {
@@ -29,27 +21,7 @@ const ActivitiesDetailsPage = () => {
     if (!activity) {
       return <p>Loading...</p>;
     }
-
-    //handle the favorite button
-    const handleFavoriteButton = () => {
-      try {
-        if (isFavorite) {
-          userService.removeFavoriteActivity(idactivity)
-            .then(() => setIsFavorite(false))
-            .catch((err) => console.error(err));
-        } else {
-          userService.addFavoriteActivity(idactivity)
-            .then(() => setIsFavorite(true))
-            .catch((err) => console.error(err));
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-     
-
-//display activity details
-//display button to add and remove the activity from the favourites depending on the user id    
+    
 return (
         <div>
             {activity && (
@@ -61,9 +33,7 @@ return (
                     <p>Min. Age: {activity?.ageMin}</p>
                     <p>Max. Age: {activity?.ageMax}</p>
                     <p>Location: {activity?.location}</p>
-                    <button onClick={handleFavoriteButton}>
-                        {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-                    </button>
+                    <FavoriteButton idactivity={idactivity}/>
                 </>
             )}
         </div>
