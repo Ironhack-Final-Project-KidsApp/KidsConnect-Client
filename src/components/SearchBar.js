@@ -16,23 +16,23 @@ function SearchBar(props) {
   //   onSearch(searchTerm);
   // };
 
-  const handleSearchChange = (item) => {
+  const handleSearchChange = () => {
     const filterbyactivity = searchDB.filter(activity =>{
-    // if(item.title.length === 0 && item.stroller.length === 0){return true}
-    if(item.title.length > 0 && !activity.title.toLowerCase().includes(item.title.toLowerCase())){return false}
-    else if(item.stroller.length > 0 && !(activity.stroller.toString() === item.stroller.toString())){return false}
-    else if(item.age > 0 && !(activity.ageMin <= item.age && activity.ageMax >= item.age)){return false}
-    else if(item.venuetype.length > 0 && !(activity.venuetype.toString() === item.venuetype.toString())){return false}
-    else if(item.priced.length > 0 && !(activity.priced.toString() === item.priced.toString())){return false}
+    // if(searchTerm.title.length === 0 && searchTerm.stroller.length === 0){return true}
+    if(searchTerm.title.length > 0 && !activity.title.toLowerCase().includes(searchTerm.title.toLowerCase())){return false}
+    else if(searchTerm.stroller.length > 0 && !(activity.stroller.toString() === searchTerm.stroller.toString())){return false}
+    else if(searchTerm.age > 0 && !(activity.ageMin <= searchTerm.age && activity.ageMax >= searchTerm.age)){return false}
+    else if(searchTerm.venuetype.length > 0 && !(activity.venuetype.toString() === searchTerm.venuetype.toString())){return false}
+    else if(searchTerm.priced.length > 0 && !(activity.priced.toString() === searchTerm.priced.toString())){return false}
     else{return true}
     });
     props.setActivitiesList(filterbyactivity);
   };
 
   useEffect(()=>{
-    // console.log(searchTerm.age)
-    handleSearchChange(searchTerm);
-  }, [searchTerm])
+    console.log(searchTerm.age)
+    handleSearchChange();
+  },[searchTerm])
   
 
   return (
