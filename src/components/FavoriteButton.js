@@ -10,7 +10,7 @@ const FavoriteButton = ({ idactivity }) => {
     useEffect(() => {
         userService.getUsersFavorites(user._id)
           .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             const userFavorites = response.data;
             const isFavorite = userFavorites.includes(idactivity);
             setIsFavorite(isFavorite);

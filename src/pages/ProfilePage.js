@@ -7,7 +7,7 @@ import ActivityCard from '../components/ActivityCard';
 function ProfilePage() {
   const authContext = useContext(AuthContext);
   const { user } = authContext;
-  const [userImage, setUserImage] = useState(null);
+  const [userProfile, setUser] = useState({});
   const [showUpload, setShowUpload] = useState(false);
   const [userActivity, setActivity] = useState(null);
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -23,7 +23,7 @@ function ProfilePage() {
       .uploadImage(uploadData)
       .then(response => {
         console.log("response is: ", response);
-        setUserImage(response.data.fileUrl);
+        setUser({...userProfile, image: response.data.fileUrl});
       })
       .catch((err) => {const errorMessage = err?.response?.data?.message ?? 'Internal error'; setErrorMessage(errorMessage)});
   };
@@ -32,7 +32,7 @@ function ProfilePage() {
     e.preventDefault();
 
     userService
-      .updateUser({id: user._id, image: userImage})
+      .updateUser({id: user._id, image: userProfile.image})
       .then(response => {
         console.log("response: ", response);
         // setUserImage("")
@@ -44,8 +44,8 @@ function ProfilePage() {
   useEffect(() => {
     userService.getUser(user._id)
       .then(response => {
-        // console.log("response is:", response.data)
-        setUserImage(response.data.image)
+        console.log("response is:", response)
+        setUser({...userProfile, favorite: response.data.favorite, image: response.data.image})
       })
       // .then(setLoading(false));
       .catch((err) => {const errorMessage = err?.response?.data?.message ?? 'Internal error'; setErrorMessage(errorMessage)});
@@ -57,7 +57,7 @@ function ProfilePage() {
       .catch((err) => {const errorMessage = err?.response?.data?.message ?? 'Internal error'; setErrorMessage(errorMessage)});
   }, [user._id])
 
-    // console.log("User is:", user)
+    // console.log("User is:", userProfile)
   return(
     <div>
       {errorMessage && <p>{errorMessage}</p>}
@@ -66,7 +66,7 @@ function ProfilePage() {
       <p>Email: {user.email}</p>
 
       <p>Profile Image:</p>
-      {userImage && <img src={userImage} alt="profile_image" style={{ width: '50px', height: '50px', borderRadius: '75%' }} />}
+      {userProfile.image && <img src={userProfile.image} alt="profile_image" style={{ width: '50px', height: '50px', borderRadius: '75%' }} />}
           
       <br />
       {!showUpload &&
@@ -79,15 +79,18 @@ function ProfilePage() {
                   <button type="submit">Save new profile image</button>
               </form>)
       }
-      <h1>{user.name}'s Activities</h1>
+      <h1>{user.name}'s Created Activities</h1>
       {!userActivity && <div>Loading</div>}
-      { userActivity && userActivity.length > 0 ? userActivity.map(item => {
+      { userActivity && userActivity.length > 0 && userActivity.map(item => {
         return <ActivityCard key={item._id} activity={item} />
-      })
-      :
+      })}
+      {/* {userActivity.length === 0 &&
       <div>Your created activities go here.</div>
-      }
-      
+      } */}
+      <h1>{user.name}'s Favorites</h1>
+      {userProfile.favorite && userProfile.favorite.map(item => {
+        return <ActivityCard key={item._id} activity={item} />
+      })}
     </div>
   )
 }

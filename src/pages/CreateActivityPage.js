@@ -22,18 +22,9 @@ const CreateActivityPage = () => {
 
     const handleSubmit = e =>{
         e.preventDefault();
+        setActivity({...activity, author: user._id})
         // console.log({activity: activity, author: user._id})
-        activityService.createActivity({
-            title: activity.title,
-            description: activity.description,
-            author: user._id,
-            stroller: activity.stroller,
-            ageMin: activity.ageMin,
-            ageMax: activity.ageMax,
-            location: activity.location,
-            venuetype: activity.venuetype,
-            event: activity.event
-        })
+        activityService.createActivity(activity)
         .then(response => navigate(`/profile/${user._id}`))
         .catch(err=>setError(err.message));
     }
