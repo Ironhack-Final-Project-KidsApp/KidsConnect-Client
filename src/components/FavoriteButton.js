@@ -20,16 +20,14 @@ const FavoriteButton = ({ idactivity }) => {
           });
       }, [user._id, idactivity]);
 
-    const handleFavoriteButton = () => {
+      const handleFavoriteButton = async () => {
         try {
           if (isFavorite) {
-            userService.removeFavoriteActivity(idactivity)
-              .then(() => setIsFavorite(false))
-              .catch((err) => console.error(err));
+            await userService.removeFavoriteActivity(idactivity);
+            setIsFavorite(false);
           } else {
-            userService.addFavoriteActivity(idactivity)
-              .then(() => setIsFavorite(true))
-              .catch((err) => console.error(err));
+            await userService.addFavoriteActivity(idactivity);
+            setIsFavorite(true);
           }
         } catch (err) {
           console.error(err);
