@@ -8,6 +8,7 @@ function ActivityCard({ activity }) {
       <Link to={`/activity/${activity?._id}`}>
         <h1>{activity?.title}</h1>
       </Link>
+     {/* { console.log('author:', activity.author)} */}
       <p>Created by: {activity?.author?.name}</p>
     </div>
   );
