@@ -16,6 +16,10 @@ class RateServices {
       return config;
     });
   }
+  
+  userRateForActivity = (activityId) => {
+    return this.api.get(`/activity/${activityId}/rating`);
+  };
 
   createRate = (activityId, requestBody) => {
     return this.api.post(`/activity/${activityId}/rating`, requestBody);

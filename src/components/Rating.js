@@ -7,9 +7,20 @@ const Rating = ({ idactivity }) => {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState()
 
-    //user rate the activity - rateService.createRate(idactivity)
-    //after refresh or log out the users rating need to be mantained
-   //useEffect??
+    useEffect(() => {
+        // Fetch the user's current rating for the activity when the component mounts
+        const fetchUserRating = async () => {
+          try {
+            const response = await rateService.userRateForActivity(idactivity);
+            const userRating = response.data.rate;
+            setRating(userRating);
+          } catch (error) {
+            console.error("Error fetching user's rating for the activity:", error);
+          }
+        };
+    
+        fetchUserRating();
+      }, [idactivity]);
 
     const handelRateClick = async (item) => {
         try {
