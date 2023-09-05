@@ -7,21 +7,18 @@ import rateService from "../services/rate.services";
 
 const ActivitiesDetailsPage = () => {
     const { idactivity } = useParams();
-    const [activity, setActivity] = useState(null);
-    //test rating     
+    const [activity, setActivity] = useState(null);   
     const [averageRating, setAverageRating] = useState(null); 
 
     useEffect(() => {
       activityService.getActivity(idactivity)
       .then((response) => {
-        //console.log(response.data)
         setActivity(response.data)
       })
       .catch((error) => {
         console.log(error);
       });
 
-      // Fetch average rating
       rateService.avarageRate(idactivity)
       .then((response) => {
         console.log('rate response', response.data.result)
@@ -43,10 +40,12 @@ return (
                     <img src={activity?.image} alt="activity-img" />
                     <h1>{activity?.title}</h1>
                     <p>Description: {activity?.description}</p>
-                    <p>Stroller: {activity?.stroller}</p>
+                    <p>Stroller: {activity?.stroller ? "Yes" : "No"}</p>
                     <p>Min. Age: {activity?.ageMin}</p>
                     <p>Max. Age: {activity?.ageMax}</p>
                     <p>Location: {activity?.location}</p>
+                    <p>Priced: {activity?.priced ? "Yes" : "No"}</p>
+                    <p>Venue type: {activity?.venuetype}</p>
                     <FavoriteButton idactivity={idactivity}/>
                     <Rating idactivity={idactivity}/>
                     {averageRating !== null && (
