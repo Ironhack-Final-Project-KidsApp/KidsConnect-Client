@@ -1,55 +1,40 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
-import userService from '../services/user.services';
+import { useEffect, useState } from "react";
 import activityService from '../services/activity.services';
-import { AuthContext } from '../context/auth.context';
+import FavoriteButton from "../components/FavoriteButton";
+import Rating from "../components/Rating";
+import rateService from "../services/rate.services";
 
 const ActivitiesDetailsPage = () => {
-    const authContext = useContext(AuthContext);
-    const { user } = authContext;
-    const { idActivity } = useParams();
-    const [activity, setActivity] = useState(null);
-    const [isFavorite, setIsFavorite] = useState(false);
+    const { idactivity } = useParams();
+    const [activity, setActivity] = useState(null);  
+    const [averageRating, setAverageRating] = useState(null); 
 
-    console.log('user is:', user)
-    console.log('activity is:', idActivity)
-    
-    //fetch activity details - done
     useEffect(() => {
-      activityService.getActivity(idActivity)
+      activityService.getActivity(idactivity)
       .then((response) => {
-        console.log(response.data)
+        //console.log(response.data)
         setActivity(response.data)
       })
       .catch((error) => {
         console.log(error);
       });
-    }, [idActivity])
+
+      // Fetch average rating
+      rateService.avarageRate(idactivity)
+      .then((response) => {
+        console.log('rate response', response.data.result)
+          setAverageRating(response.data.result);
+      })
+      .catch((error) => {
+          console.error("Error fetching average rating:", error);
+      });
+    }, [idactivity])
 
     if (!activity) {
       return <p>Loading...</p>;
     }
-
-    //handle the favorite button
-    const handleFavoriteButton = () => {
-      try {
-        if (isFavorite) {
-          userService.removeFavoriteActivity(idActivity)
-            .then(() => setIsFavorite(false))
-            .catch((err) => console.error(err));
-        } else {
-          userService.addFavoriteActivity(idActivity)
-            .then(() => setIsFavorite(true))
-            .catch((err) => console.error(err));
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-     
-
-//display activity details
-//display button to add and remove the activity from the favourites depending on the user id    
+    
 return (
         <div>
             {activity && (
@@ -61,9 +46,11 @@ return (
                     <p>Min. Age: {activity?.ageMin}</p>
                     <p>Max. Age: {activity?.ageMax}</p>
                     <p>Location: {activity?.location}</p>
-                    <button onClick={handleFavoriteButton}>
-                        {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-                    </button>
+                    <FavoriteButton idactivity={idactivity}/>
+                    <Rating idactivity={idactivity}/>
+                    {averageRating !== null && (
+                        <p>Average Rating: {averageRating}</p>
+                    )}
                 </>
             )}
         </div>
