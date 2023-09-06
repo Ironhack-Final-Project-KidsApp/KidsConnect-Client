@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import activityService from '../services/activity.services';
 import FavoriteButton from "../components/FavoriteButton";
 import Rating from "../components/Rating";
@@ -68,7 +68,7 @@ const ActivitiesDetailsPage = () => {
           <div>
             <DeleteActivity idactivity={idactivity} userid={user._id} />
             <br />
-            <button>Edit Activity</button>
+            <Link to='./edit'><button>Edit Activity</button></Link>
           </div> :<></> }
         </>
       )}
