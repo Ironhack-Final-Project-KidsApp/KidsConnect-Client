@@ -7,7 +7,7 @@ const CreateActivityPage = () => {
     const navigate = useNavigate();
     const authContext = useContext(AuthContext);
     const {user} = authContext;
-    const [activity, setActivity] = useState({})
+    const [activity, setActivity] = useState({author: user._id})
     // const [title , setTitle] = useState('');
     // const [description, setDescription] = useState('');
     // const [stroller, setStroller] = useState(false);
@@ -22,11 +22,11 @@ const CreateActivityPage = () => {
 
     const handleSubmit = e =>{
         e.preventDefault();
-        setActivity({...activity, author: user._id})
-        // console.log({activity: activity, author: user._id})
+        //setActivity({...activity, author: user._id})
+        // console.log(activity)
         activityService.createActivity(activity)
-        .then(response => navigate(`/profile/${user._id}`))
-        .catch(err=>setError(err.message));
+            .then(response => navigate(`/profile/${user._id}`))
+            .catch(err=>setError(err.message));
     }
 
     return (
