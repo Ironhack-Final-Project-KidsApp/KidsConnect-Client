@@ -16,15 +16,11 @@ const ActivitiesDetailsPage = () => {
 
   const fetchAverageRating = () => {
     rateService.avarageRate(idactivity)
-  const fetchAverageRating = () => {
-    rateService.avarageRate(idactivity)
       .then((response) => {
-        console.log('rate response', response.data.result)
-        setAverageRating(response.data.result);
+        // console.log('rate response', response.data.result)
         setAverageRating(response.data.result);
       })
       .catch((error) => {
-        console.error("Error fetching average rating:", error);
         console.error("Error fetching average rating:", error);
       });
   };
@@ -40,11 +36,6 @@ const ActivitiesDetailsPage = () => {
 
     fetchAverageRating();
   }, [idactivity]);
-
-  const updateAverageRating = () => {
-    fetchAverageRating();
-  };
-  };
 
   useEffect(() => {
     activityService.getActivity(idactivity)
@@ -84,8 +75,8 @@ const ActivitiesDetailsPage = () => {
           {averageRating !== null && (
             <p>Average Rating: {averageRating}</p>
           )}
-          {activity?.author.name && <p>Author: {activity.author.name}</p>}
-          {activity.author._id === user._id ?
+          {activity?.author?.name && <p>Author: {activity.author.name}</p>}
+          {activity.author?._id === user._id ?
           <div>
             <DeleteActivity idactivity={idactivity} userid={user._id} />
             <br />

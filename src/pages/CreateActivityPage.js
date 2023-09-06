@@ -50,6 +50,7 @@ const CreateActivityPage = () => {
                     <option value="outdoor">Outdoor</option>
                     <option value="indoor">Indoor</option>
                 </select>
+                <br />
                 <label htmlFor="">Event</label>
                 <input type="text" name="" id="" onChange={e=> setActivity({...activity, event:e.target.value})} />
                 {/* <input type="submit" value="Create Activity" onClick={handleSubmit} /> */}
