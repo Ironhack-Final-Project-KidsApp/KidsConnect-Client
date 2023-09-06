@@ -7,11 +7,13 @@ import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
 import CreateActivityPage from './pages/CreateActivityPage';
 import ActivitiesDetailsPage from './pages/ActivitiesDetailsPage';
+import EditActivitiesPage from './pages/EditActivitiesPage';
 // import ErrorPage from './pages/ErrorPage';
 import { Routes, Route } from 'react-router-dom';
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
 import './App.css';
+
 
 
 
@@ -27,7 +29,8 @@ function App() {
         <Route path="/login" element={ <IsAnon> <LoginPage /> </IsAnon>} />
         <Route path="/profile/:idprofile" element={ <IsPrivate> <ProfilePage /> </IsPrivate>} />
         <Route path="/create-activity" element={ <IsPrivate> <CreateActivityPage /> </IsPrivate>} />
-        <Route path='/activity/:idactivity' element={<ActivitiesDetailsPage/>}/>
+        <Route path='/activity/:idactivity' element={<ActivitiesDetailsPage/>}/> {/* add middleware to protect page */}
+        <Route path='/activity/:idactivity/edit' element={<EditActivitiesPage/>}/> {/* add middleware to protect page */}
       {/* <Route path="*" element={ <ErrorPage /> } />   */}  
       </Routes>
 

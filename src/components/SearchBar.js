@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import { FaSearch } from 'react-icons/fa'
 import './SearchBar.css'
 
+
 function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState({title: '', stroller: '', age:0, venuetype: '', priced:''});
   const [searchDB] = useState(props.activitiesList);

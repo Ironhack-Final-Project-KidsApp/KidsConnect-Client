@@ -37,7 +37,7 @@ const Rating = ({ idactivity, onUpdateAverageRating }) => {
             const currentRating = index + 1;
             return(
                 <label key={currentRating}>
-                <input type="radio" name="rating" value={currentRating} onClick={() => handelRateClick(currentRating)}/>
+                <input id='starradio' type="radio" name="rating" value={currentRating} onClick={() => handelRateClick(currentRating)}/>
                 <FaStar 
                 className='star' 
                 size={20} 
