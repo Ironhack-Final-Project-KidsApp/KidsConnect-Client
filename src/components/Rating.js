@@ -3,19 +3,29 @@ import { FaStar } from 'react-icons/fa';
 import './Rating.css';
 import rateService from "../services/rate.services";
 
-const Rating = ({ idactivity }) => {
+const Rating = ({ idactivity, onUpdateAverageRating }) => {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState()
 
-    //user rate the activity - rateService.createRate(idactivity)
-    //after refresh or log out the users rating need to be mantained
-   //useEffect??
+    useEffect(() => {
+        const fetchUserRating = async () => {
+          try {
+            const response = await rateService.userRateForActivity(idactivity);
+            const userRating = response.data.rate;
+            setRating(userRating);
+          } catch (error) {
+            console.error("Error fetching user's rating for the activity:", error);
+          }
+        };
+    
+        fetchUserRating();
+      }, [idactivity]);
 
     const handelRateClick = async (item) => {
         try {
             await rateService.createRate(idactivity, { rate: item });
             setRating(item);
-
+            onUpdateAverageRating();
         } catch (error) {
             console.error("Error rating the activity:", error);
         }

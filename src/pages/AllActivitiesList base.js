@@ -1,56 +1,61 @@
-import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import activityService from '../services/activity.services';
-import SearchBar from "../components/SearchBar";
-import ActivityCard from "../components/ActivityCard";
-  
-function AllActivitiesList() {
-    const [activitiesList, setActivitiesList] = useState([]);
-    const [searchResults, setSearchResults] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-  
-    useEffect(() => {
-      activityService
-        .getAllActivities()
-        .then((response) => {
-          setActivitiesList(response.data);
-          setSearchResults(response.data);
-          setIsLoading(true);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, []);
-  
-    const handleSearch = (searchTerm) => {
-      const filteredActivities = activitiesList.filter((activity) =>
-        activity.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      const updatedActivities = searchTerm === "" ? activitiesList : filteredActivities;
-      setSearchResults(updatedActivities);
-    };
+import FavoriteButton from "../components/FavoriteButton";
+import Rating from "../components/Rating";
+import rateService from "../services/rate.services";
 
-  
-    if (!isLoading) {
+const ActivitiesDetailsPage = () => {
+    const { idactivity } = useParams();
+    const [activity, setActivity] = useState(null);  
+    const [averageRating, setAverageRating] = useState(null); 
+
+    useEffect(() => {
+      activityService.getActivity(idactivity)
+      .then((response) => {
+        //console.log(response.data)
+        setActivity(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+      // Fetch average rating
+      rateService.avarageRate(idactivity)
+      .then((response) => {
+        console.log('rate response', response.data.result)
+          setAverageRating(response.data.result);
+      })
+      .catch((error) => {
+          console.error("Error fetching average rating:", error);
+      });
+    }, [idactivity])
+
+    if (!activity) {
       return <p>Loading...</p>;
     }
-  
-    return (
-      <div>
-        <SearchBar onSearch={(e) => handleSearch(e.target.value)} />
-  
-        {searchResults.length === 0 ? (
-        <p>No activities found</p>
-      ) : (
+    
+return (
         <div>
-          {searchResults.map((activity) => (
-            <ActivityCard key={activity._id} activity={activity} />
-          ))}
+            {activity && (
+                <>
+                    <img src={activity?.image} alt="activity-img" />
+                    <h1>{activity?.title}</h1>
+                    <p>Description: {activity?.description}</p>
+                    <p>Stroller: {activity?.stroller}</p>
+                    <p>Min. Age: {activity?.ageMin}</p>
+                    <p>Max. Age: {activity?.ageMax}</p>
+                    <p>Location: {activity?.location}</p>
+                    <FavoriteButton idactivity={idactivity}/>
+                    <Rating idactivity={idactivity}/>
+                    {averageRating !== null && (
+                        <p>Average Rating: {averageRating}</p>
+                    )}
+                </>
+            )}
         </div>
-      )}
-    </div>
-  );
-}
+    );
+};
 
-export default AllActivitiesList;
-
+export default ActivitiesDetailsPage;
 
