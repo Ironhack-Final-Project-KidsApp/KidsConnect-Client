@@ -44,7 +44,7 @@ function ProfilePage() {
   useEffect(() => {
     userService.getUser(user._id)
       .then(response => {
-        console.log("response is:", response)
+        console.log("response is:", response.data.favorite)
         setUser({...userProfile, favorite: response.data.favorite, image: response.data.image})
       })
       // .then(setLoading(false));
