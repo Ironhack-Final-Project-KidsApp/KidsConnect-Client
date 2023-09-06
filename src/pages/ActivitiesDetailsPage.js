@@ -16,13 +16,34 @@ const ActivitiesDetailsPage = () => {
 
   const fetchAverageRating = () => {
     rateService.avarageRate(idactivity)
+  const fetchAverageRating = () => {
+    rateService.avarageRate(idactivity)
       .then((response) => {
         console.log('rate response', response.data.result)
+        setAverageRating(response.data.result);
         setAverageRating(response.data.result);
       })
       .catch((error) => {
         console.error("Error fetching average rating:", error);
+        console.error("Error fetching average rating:", error);
       });
+  };
+
+  useEffect(() => {
+    activityService.getActivity(idactivity)
+      .then((response) => {
+        setActivity(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    fetchAverageRating();
+  }, [idactivity]);
+
+  const updateAverageRating = () => {
+    fetchAverageRating();
+  };
   };
 
   useEffect(() => {
