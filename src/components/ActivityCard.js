@@ -4,7 +4,7 @@ function ActivityCard({ activity }) {
 
   return (
     <div key={activity?._id}>
-      <img src={activity?.image} alt="activity-img" />
+      <img src={activity?.activityImage} alt="activity-img" />
       <Link to={`/activity/${activity?._id}`}>
         <h1>{activity?.title}</h1>
       </Link>
