@@ -45,7 +45,7 @@ function ProfilePage() {
     userService.getUser(user._id)
       .then(response => {
         console.log("response is:", response.data.favorite)
-        setUser({...userProfile, favorite: response.data.favorite, image: response.data.image})
+        setUser({...userProfile, favorite: response.data.favorite.reverse(), image: response.data.image})
       })
       // .then(setLoading(false));
       .catch((err) => {const errorMessage = err?.response?.data?.message ?? 'Internal error'; setErrorMessage(errorMessage)});
