@@ -17,6 +17,10 @@ class ActivityServices {
     });
   }
 
+  uploadActivityImage = (file) => {
+    return this.api.post('/upload-activity-image', file);
+  };
+
   createActivity = (requestBody) => {
     return this.api.post("/activity", requestBody);
   };

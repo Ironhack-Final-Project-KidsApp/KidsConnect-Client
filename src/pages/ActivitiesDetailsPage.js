@@ -61,10 +61,10 @@ const ActivitiesDetailsPage = () => {
     <div>
       {activity && (
         <>
-          <img src={activity?.image} alt="activity-img" />
+          <img src={activity?.activityImage} alt="activity-img" />
           <h1>{activity?.title}</h1>
           <p>Description: {activity?.description}</p>
-          <p>Stroller: {activity?.stroller ? "Yes" : "No"}</p>
+          <p>Stroller Accesible: {activity?.stroller ? "Yes" : "No"}</p>
           <p>Min. Age: {activity?.ageMin}</p>
           <p>Max. Age: {activity?.ageMax}</p>
           <p>Location: {activity?.location}</p>
