@@ -2,13 +2,11 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext, useState } from "react";      
 import { AuthContext } from "../context/auth.context"
 import logo from '../assets/logo.png';
-import { AppBar, Box, Button, Divider, IconButton, List, ListItemText, SwipeableDrawer, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Divider, List, ListItemText, SwipeableDrawer, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import MailIcon from '@mui/icons-material/Mail';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import LogoutIcon from '@mui/icons-material/Logout';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import PersonIcon from '@mui/icons-material/Person';
