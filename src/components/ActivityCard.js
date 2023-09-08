@@ -1,16 +1,39 @@
-import { Link } from "react-router-dom";
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function ActivityCard({ activity }) {
+  const authorName = activity?.author?.name || 'Unknown Author';
 
   return (
-    <div key={activity?._id}>
-      <img src={activity?.activityImage} alt="activity-img" />
-      <Link to={`/activity/${activity?._id}`}>
-        <h1>{activity?.title}</h1>
-      </Link>
-      {activity.author?.name ? <p>Created by: {activity.author.name}</p> : <></>}
-    </div>
+    <Card sx={{ width: 250, margin: '10px' }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="200"
+          image={activity?.activityImage}
+          alt="activity-img"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+          {activity?.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+             Created by:{authorName}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+        <Link to={`/activity/${activity?._id}`}>Check activity!</Link>
+        </Button>
+      </CardActions>
+    </Card>
   );
-} 
+}
 
 export default ActivityCard;
