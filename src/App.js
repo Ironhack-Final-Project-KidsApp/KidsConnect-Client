@@ -13,13 +13,21 @@ import { Routes, Route } from 'react-router-dom';
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
 import './App.css';
+import { Box } from '@mui/material';
 
 
 
 
 function App() {
   return (
-    <div className="App">
+    <Box
+      className="App"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+      }}
+    >
       <Navbar />
 
       <Routes>
@@ -35,7 +43,7 @@ function App() {
       </Routes>
 
       <Footer />
-    </div>
+    </Box>
   );
 }
 

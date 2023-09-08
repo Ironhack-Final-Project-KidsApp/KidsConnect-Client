@@ -52,7 +52,7 @@ function ProfilePage() {
     userService.getActivity(user._id)
       .then(response => {
         // console.log("response is:", response.data)
-        setActivity(response.data)
+        setActivity(response.data.reverse())
       })
       .catch((err) => {const errorMessage = err?.response?.data?.message ?? 'Internal error'; setErrorMessage(errorMessage)});
   }, [user._id])

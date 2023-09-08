@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import activityService from '../services/activity.services';
 import FavoriteButton from "../components/FavoriteButton";
-import Rating from "../components/Rating";
-import rateService from "../services/rate.services";
+import Ratings from "../components/Ratings";
+// import rateService from "../services/rate.services";
 import { AuthContext } from "../context/auth.context";
 import DeleteActivity from "../components/DeleteActivity";
 
@@ -12,18 +12,30 @@ const ActivitiesDetailsPage = () => {
   const { user } = authContext;
   const { idactivity } = useParams();
   const [activity, setActivity] = useState(null);
-  const [averageRating, setAverageRating] = useState(null);
+  // const [averageRating, setAverageRating] = useState(null);
 
-  const fetchAverageRating = () => {
-    rateService.avarageRate(idactivity)
-      .then((response) => {
-        // console.log('rate response', response.data.result)
-        setAverageRating(response.data.result);
-      })
-      .catch((error) => {
-        console.error("Error fetching average rating:", error);
-      });
-  };
+  // const fetchAverageRating = () => {
+  //   rateService.avarageRate(idactivity)
+  //     .then((response) => {
+  //       // console.log('rate response', response.data.result)
+  //       setAverageRating(response.data.result);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching average rating:", error);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   activityService.getActivity(idactivity)
+  //     .then((response) => {
+  //       setActivity(response.data)
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+
+  //   // fetchAverageRating();
+  // }, [idactivity]);
 
   useEffect(() => {
     activityService.getActivity(idactivity)
@@ -34,24 +46,12 @@ const ActivitiesDetailsPage = () => {
         console.log(error);
       });
 
-    fetchAverageRating();
+    // fetchAverageRating();
   }, [idactivity]);
 
-  useEffect(() => {
-    activityService.getActivity(idactivity)
-      .then((response) => {
-        setActivity(response.data)
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    fetchAverageRating();
-  }, [idactivity]);
-
-  const updateAverageRating = () => {
-    fetchAverageRating();
-  };
+  // const updateAverageRating = () => {
+  //   fetchAverageRating();
+  // };
 
   if (!activity) {
     return <p>Loading...</p>;
@@ -71,10 +71,10 @@ const ActivitiesDetailsPage = () => {
           <p>Priced: {activity?.priced ? "Yes" : "No"}</p>
           <p>Venue type: {activity?.venuetype}</p>
           <FavoriteButton idactivity={idactivity} />
-          <Rating idactivity={idactivity} onUpdateAverageRating={updateAverageRating} />
-          {averageRating !== null && (
+          <Ratings idactivity={idactivity} />
+          {/* {averageRating !== null && (
             <p>Average Rating: {averageRating}</p>
-          )}
+          )} */}
           {activity?.author?.name && <p>Author: {activity.author.name}</p>}
           {activity.author?._id === user._id ?
           <div>

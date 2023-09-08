@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 // import { FaSearch } from 'react-icons/fa'
 import './SearchBar.css'
+import { Search } from "@mui/icons-material";
 
 
 function SearchBar(props) {
@@ -42,6 +43,9 @@ function SearchBar(props) {
       //className="input-wrapper"
       // onSubmit={handleSubmit}
       >
+
+
+        <Search></Search>
         {/* <FaSearch id='search-icon'/> */}
         <input placeholder="Search for activities..." type="search"
           // value={searchTerm}

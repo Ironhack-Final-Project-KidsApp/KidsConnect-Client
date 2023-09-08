@@ -2,6 +2,9 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import authService from "../services/auth.services";
+import { Avatar, Box, Button, Container, CssBaseline, Grid, TextField, Typography } from "@mui/material";
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
 
 
 function LoginPage() {
@@ -12,8 +15,8 @@ function LoginPage() {
     const navigate = useNavigate();
     const { storeToken, authenticateUser } = useContext(AuthContext);
 
-    const handleEmail = (e) => setEmail(e.target.value);
-    const handlePassword = (e) => setPassword(e.target.value);
+    // const handleEmail = (e) => setEmail(e.target.value);
+    // const handlePassword = (e) => setPassword(e.target.value);
     
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -29,26 +32,87 @@ function LoginPage() {
             setErrorMessage(errorMessage)})
     }
     return(
-        <div>
-            <h2>Log in</h2>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label>Email</label>
-                        <br />
-                        <input type="text" name="email"  value={email} onChange={handleEmail}/>
-                        <br />
-                        <label>Password</label>
-                        <br />
-                        <input type="password" name="password" value={password} onChange={handlePassword} />
-                        <br />
-                    </div>
-                    <button type="submit">Log in</button>
-                </form>
+        <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Log In
+          </Typography>
+          { errorMessage && <p>{errorMessage}</p> }
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required='true'
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={e=>setEmail(e.target.value)}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={e=>setPassword(e.target.value)}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Log In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+              </Grid>
+              <Grid item>
+                <Link to="/signup" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        
+      </Container>
+        // <div>
+        //     <h2>Log in</h2>
+        //         <form onSubmit={handleSubmit}>
+        //             <div>
+        //                 <label>Email</label>
+        //                 <br />
+        //                 <input type="text" name="email"  value={email} onChange={handleEmail}/>
+        //                 <br />
+        //                 <label>Password</label>
+        //                 <br />
+        //                 <input type="password" name="password" value={password} onChange={handlePassword} />
+        //                 <br />
+        //             </div>
+        //             <button type="submit">Log in</button>
+        //         </form>
 
-            { errorMessage && <p>{errorMessage}</p> }
+        //     { errorMessage && <p>{errorMessage}</p> }
 
-            <p>Don't have an account? Please sign up here!<Link to="/signup">Log in</Link></p>
-        </div>
+        //     <p>Don't have an account? Please sign up here!<Link to="/signup">Log in</Link></p>
+        // </div>
     )
 }
 
