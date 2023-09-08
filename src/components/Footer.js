@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Container, Divider, Grid, Typography } from '@mui/material';
+import { Box, Container, Divider, Grid, Typography } from '@mui/material';
 // import GitHubLogo from '../assets/github.png';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
