@@ -9,22 +9,27 @@ const EditActivitiesPage = () => {
     const authContext = useContext(AuthContext);
     const {user} = authContext;
     const [activity, setActivity] = useState({author: user._id})
-    // const [title , setTitle] = useState('');
-    // const [description, setDescription] = useState('');
-    // const [stroller, setStroller] = useState(false);
-    // const [ageMin, setAgeMin] = useState(0);
-    // const [ageMax, setAgeMax] = useState(0);
-    // const [location, setLocation] = useState('');
-    // const [venuetype, setVenueType] = useState('');
-    // const [event, setEvent] = useState('');
     const [error, setError] = useState(null)
 
-    // console.log('User is:', user)
+    const handleFileUpload = (e) => {
+        console.log("The file to be uploaded is: ", e.target.files[0]);
+        const uploadData = new FormData();
+        uploadData.append("activityImage", e.target.files[0]);
+        activityService
+          .uploadActivityImage(uploadData)
+          .then((response) => {
+            console.log("response is: ", response);
+            setActivity({ ...activity, activityImage: response.data.fileUrl });
+          })
+          .catch((err) => {
+            const errorMessage =
+              err?.response?.data?.message ?? "Image upload failed.";
+              setError(errorMessage);
+          });
+      };
 
     const handleSubmit = e =>{
         e.preventDefault();
-        //setActivity({...activity, author: user._id})
-        // console.log(activity)
         activityService.updateActivity(idactivity, activity)
             .then(response => navigate(`/profile/${user._id}`))
             .catch(err=>setError(err.message));
@@ -33,7 +38,7 @@ const EditActivitiesPage = () => {
     useEffect(()=>{
         activityService.getActivity(idactivity)
             .then(response => setActivity(response.data))
-    },[])
+    },[idactivity])
 
     return (
         <div>
@@ -56,9 +61,16 @@ const EditActivitiesPage = () => {
                     <option value="outdoor">Outdoor</option>
                     <option value="indoor">Indoor</option>
                 </select>
-                <label htmlFor="">Event</label>
-                <input type="text" value={activity?.event} name="" id="" onChange={e=> setActivity({...activity, event:e.target.value})} />
-                {/* <input type="submit" value="Create Activity" onClick={handleSubmit} /> */}
+                <br />
+              <label htmlFor="">Priced:</label>
+              <input type="checkbox" onChange={e => setActivity({...activity, priced: e.target.checked})} />
+              <br />
+              <label htmlFor="">Image:</label>
+              <input type="file" name="image" onChange={(e) => handleFileUpload(e)} />
+
+              {/* <label htmlFor="">Event</label>
+              <input type="text" name="" id="" onChange={e=> setActivity({...activity, event:e.target.value})} />*/}
+               
                 <button type="submit">Edit Activity</button>
             </form>
             {error && <div>{error}</div>}

@@ -12,7 +12,7 @@ function AllActivitiesList() {
       activityService
         .getAllActivities()
         .then((response) => {
-          setActivitiesList(response.data);
+          setActivitiesList(response.data.reverse());
           // setSearchResults(response.data);
           setIsLoading(true);
         })
