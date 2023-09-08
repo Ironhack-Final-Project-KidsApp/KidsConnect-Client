@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext, useState } from "react";      
 import { AuthContext } from "../context/auth.context"
 import logo from '../assets/logo.png';
-import { Box, Button, Divider, IconButton, List, ListItemText, SwipeableDrawer, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Divider, IconButton, List, ListItemText, SwipeableDrawer, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MailIcon from '@mui/icons-material/Mail';
 import ListItem from '@mui/material/ListItem';
@@ -98,8 +98,8 @@ function Navbar() {
   // };
 
   return (
-    <div>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'space-between' }}>
+    <AppBar position="sticky" sx={{backgroundColor:'white'}}>
+      <Toolbar  sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'space-between'}}>
         <NavLink to="/"><img src={logo} alt="logo" style={{width: '8rem'}}/></NavLink>
         
         {!isLoggedIn && 
@@ -126,7 +126,8 @@ function Navbar() {
         }
         
       </Toolbar>
-        {/* <img src={logo} alt="logo" style={{width: '8rem'}}/>
+    </AppBar>
+        /* <img src={logo} alt="logo" style={{width: '8rem'}}/>
         <nav>
           <NavLink to="/">Home</NavLink>
           <br/>
@@ -149,8 +150,7 @@ function Navbar() {
             <NavLink to="/signup">Sign up</NavLink>
             </div>
           )}            
-        </nav> */}
-    </div>
+        </nav> */
   );
 }
  
