@@ -1,0 +1,16 @@
+.Homepage{
+    padding: 10px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.Homepage img{
+    max-width: 80vw;
+}
+
+#home-usertips{
+    background-color: blueviolet;
+    color: white;
+    padding: 20px 0;
+}
+
