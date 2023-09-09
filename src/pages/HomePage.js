@@ -5,10 +5,12 @@ import { AuthContext } from "../context/auth.context";
 import AllActivitiesList from "./AllActivitiesList";
 import logo from'../assets/logo2-removebg-preview.png'
 // import KidsParkImg from '../assets/kids-park.jpg';
-import { Button, CardMedia, Container, Grid, Stack } from "@mui/material";
+import { Box, Button, Card, CardContent, CardMedia, Container, Divider, Grid, Paper, Stack, Typography } from "@mui/material";
 import './Homepage.css';
-import { useNavigate } from "react-router-dom";
-import CarouselHome from "../components/CarouselHome";
+import { Link, useNavigate } from "react-router-dom";
+import CarouselHome from "../components/Homepage/CarouselHome";
+import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
+import HomeDescription from "../components/Homepage/HomeDescription";
 
 
 function HomePage() {
@@ -27,25 +29,30 @@ function HomePage() {
         </div>
       ) : (
         <div className="Homepage">
+          <section id="home-logo">
+            <img src={logo} alt="" />
+            <h2 style={{width:'75%', margin:'auto'}}>The ultimate app for kids activities.</h2>
+          </section>
           <section style={{maxWidth:'500px', margin:'auto'}}>
             <CarouselHome/>
           </section>
-
-          <section>
-            <img src={logo} alt="" />
-            <h2>The ultimate app for kids activities.</h2>
-          </section>
-          {/* <section> add flex property
-            <img src={KidsParkImg} alt="" />
-            <h2>Discover Parks</h2>
-            <p></p> 
-          </section> */}
+          <HomeDescription/>
+          <Divider variant="middle" sx={{ borderBottomWidth: 5 }} />
           <section id="home-usertips">
             <div>
               <h2>Learn more</h2>
-              <p>Explore the tips and tricks on how to use KidsConnect.</p>
+              <p style={{width:'75%', margin:'auto'}}>Explore the tips and tricks on how to use KidsConnect.</p>
             </div>
+            <br />
             <Button variant="contained" color="success" onClick={e=>{navigate('/usertips')}}>User Tips</Button>
+          </section>
+          <Divider variant="middle" sx={{ borderBottomWidth: 5 }} />
+          <section id="home-getstarted">
+            <div>
+              <h2>Ready?</h2>
+              <p style={{width:'75%', margin:'auto'}}>Simply <Link to='/login'>Log In</Link> to start your child's adventure.</p>
+            </div>
+            <br />
           </section>
         </div>
         

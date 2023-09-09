@@ -1,9 +1,9 @@
 // import Carousel from 'react-bootstrap/Carousel';
 // import CarouselImage from './CarouselImage';
-import { Paper, Button } from '@mui/material'
-import KidsParkImg from '../assets/kids-park.jpg';
-import KidsMuseumImg from '../assets/kids-museum.jpg';
-import KidsJumpImg from '../assets/kids-jump.jpg';
+import { Paper } from '@mui/material'
+import KidsParkImg from '../../assets/kids-park.jpg';
+import KidsMuseumImg from '../../assets/kids-museum.jpg';
+import KidsJumpImg from '../../assets/kids-jump.jpg';
 import Carousel from 'react-material-ui-carousel';
 
 
