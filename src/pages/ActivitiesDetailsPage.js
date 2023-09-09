@@ -1,41 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import activityService from '../services/activity.services';
 import FavoriteButton from "../components/FavoriteButton";
 import Ratings from "../components/Ratings";
-// import rateService from "../services/rate.services";
 import { AuthContext } from "../context/auth.context";
 import DeleteActivity from "../components/DeleteActivity";
+import { Container } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import CardMedia from '@mui/material/CardMedia';
+
 
 const ActivitiesDetailsPage = () => {
   const authContext = useContext(AuthContext);
   const { user } = authContext;
   const { idactivity } = useParams();
   const [activity, setActivity] = useState(null);
-  // const [averageRating, setAverageRating] = useState(null);
-
-  // const fetchAverageRating = () => {
-  //   rateService.avarageRate(idactivity)
-  //     .then((response) => {
-  //       // console.log('rate response', response.data.result)
-  //       setAverageRating(response.data.result);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching average rating:", error);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   activityService.getActivity(idactivity)
-  //     .then((response) => {
-  //       setActivity(response.data)
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-
-  //   // fetchAverageRating();
-  // }, [idactivity]);
 
   useEffect(() => {
     activityService.getActivity(idactivity)
@@ -46,12 +27,8 @@ const ActivitiesDetailsPage = () => {
         console.log(error);
       });
 
-    // fetchAverageRating();
   }, [idactivity]);
 
-  // const updateAverageRating = () => {
-  //   fetchAverageRating();
-  // };
 
   if (!activity) {
     return <p>Loading...</p>;
@@ -59,10 +36,28 @@ const ActivitiesDetailsPage = () => {
 
   return (
     <div>
-      {activity && (
-        <>
-          <img src={activity?.activityImage} alt="activity-img" />
-          <h1>{activity?.title}</h1>
+    <Container maxWidth="xl" style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+    <Card sx={{ width: '90%', margin:8, background: "#c0c1c014"}}>
+    
+    {activity && (
+      <>
+    <CardContent>
+            <Typography gutterBottom variant="h3" component="div" sx={{ fontWeight: "700", color: "#00000", fontSize: "2rem", textTransform: "uppercase" }}>
+              {activity?.title}
+            </Typography>         
+    </CardContent>
+
+    <CardMedia
+          component="img"
+          alt="itinerary pic"
+          height="600"
+          image={activity?.activityImage}
+          style={{objectFit:'cover'}}
+        /> 
+            
+
+      
+    
           <p>Description: {activity?.description}</p>
           <p>Stroller Accesible: {activity?.stroller ? "Yes" : "No"}</p>
           <p>Min. Age: {activity?.ageMin}</p>
@@ -72,9 +67,6 @@ const ActivitiesDetailsPage = () => {
           <p>Venue type: {activity?.venuetype}</p>
           <FavoriteButton idactivity={idactivity} />
           <Ratings idactivity={idactivity} />
-          {/* {averageRating !== null && (
-            <p>Average Rating: {averageRating}</p>
-          )} */}
           {activity?.author?.name && <p>Author: {activity.author.name}</p>}
           {activity.author?._id === user._id ?
           <div>
@@ -84,6 +76,8 @@ const ActivitiesDetailsPage = () => {
           </div> :<></> }
         </>
       )}
+      </Card>
+      </Container>
     </div>
   );
 };
