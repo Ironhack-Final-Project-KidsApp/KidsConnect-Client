@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 // import { FaStar } from 'react-icons/fa';
 // import './Rating.css';
 import rateService from "../services/rate.services";
@@ -6,13 +6,13 @@ import { Rating } from "@mui/material";
 
 const Ratings = ({ idactivity }) => {
     const [rating, setRating] = useState(null);
-    const [hover, setHover] = useState()
+    // const [hover, setHover] = useState()
     const [averageRating, setAverageRating] = useState(null);
 
     // const onUpdateAverageRating = () => {
     //   fetchAverageRating();
     // };
-    const fetchAverageRating = () => {
+    const fetchAverageRating = useCallback(() => {
       rateService.avarageRate(idactivity)
         .then((response) => {
           // console.log('rate response', response.data.result)
@@ -21,8 +21,8 @@ const Ratings = ({ idactivity }) => {
         .catch((error) => {
           console.error("Error fetching average rating:", error);
         });
-    };
-    const fetchUserRating = async () => {
+    },[idactivity])
+    const fetchUserRating = useCallback(async () => {
       try {
         const response = await rateService.userRateForActivity(idactivity);
         const userRating = response.data.rate;
@@ -30,11 +30,11 @@ const Ratings = ({ idactivity }) => {
       } catch (error) {
         console.error("Error fetching user's rating for the activity:", error);
       }
-    };
+    },[idactivity])
     useEffect(() => {
       fetchAverageRating();
       fetchUserRating();
-    }, [rating]);
+    }, [fetchAverageRating, fetchUserRating]);
 
     const handelRateClick = async (item) => {
         try {

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import activityService from "../services/activity.services";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Checkbox, Container, CssBaseline, FormControlLabel, Grid, MenuItem, Paper, Step, Stepper, TextField, Typography, styled } from "@mui/material";
+import { Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, Paper, TextField, Typography, styled } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CheckIcon from '@mui/icons-material/Check';
 
@@ -54,6 +54,9 @@ const CreateActivityPage = () => {
     <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
       <Typography component="h1" variant="h4" align="center">
         Create Activity
+      </Typography>
+      <Typography component="h1" variant="h4" align="center">
+        {errorMessage}
       </Typography>
       <Grid container spacing={1}>
         <Grid item xs={12}>
