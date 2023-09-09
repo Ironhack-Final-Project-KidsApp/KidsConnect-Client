@@ -8,7 +8,7 @@ import ProfilePage from './pages/ProfilePage';
 import CreateActivityPage from './pages/CreateActivityPage';
 import ActivitiesDetailsPage from './pages/ActivitiesDetailsPage';
 import EditActivitiesPage from './pages/EditActivitiesPage';
-// import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './pages/ErrorPage';
 import { Routes, Route } from 'react-router-dom';
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
@@ -39,7 +39,7 @@ function App() {
         <Route path="/create-activity" element={ <IsPrivate> <CreateActivityPage /> </IsPrivate>} />
         <Route path='/activity/:idactivity' element={<ActivitiesDetailsPage/>}/> {/* add middleware to protect page */}
         <Route path='/activity/:idactivity/edit' element={<EditActivitiesPage/>}/> {/* add middleware to protect page */}
-      {/* <Route path="*" element={ <ErrorPage /> } />   */}  
+        <Route path="*" element={ <ErrorPage /> } />    
       </Routes>
 
       <Footer />
