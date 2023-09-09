@@ -29,7 +29,7 @@ function SignupPage(props) {
     }
     
     return(
-        <Container component="main" maxWidth="xs">
+        <Container component="form" onSubmit={handleSubmit} maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -46,7 +46,7 @@ function SignupPage(props) {
             Sign up
           </Typography>
           { errorMessage && <p>{errorMessage}</p> }
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
