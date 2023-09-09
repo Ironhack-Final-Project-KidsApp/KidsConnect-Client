@@ -12,7 +12,7 @@ import EditActivitiesPage from './pages/EditActivitiesPage';
 import { Routes, Route } from 'react-router-dom';
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
-import './App.css';
+// import './App.css';
 import { Box } from '@mui/material';
 
 

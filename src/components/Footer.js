@@ -1,6 +1,7 @@
 import { Box, Container, Divider, Grid, Typography } from '@mui/material';
 // import GitHubLogo from '../assets/github.png';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 
 function Footer() {
@@ -17,12 +18,16 @@ function Footer() {
             <Typography variant="body1">
                 {/* Made by */}
                 <Grid container spacing={2} sx={{display:'flex', alignItems:'center'}}>
-                    <Grid item xs>
-                        <a href='https://github.com/InesAlmeida-91'>Inês Almeida <GitHubIcon/></a>
+                    <Grid item xs textAlign='center'>
+                        <a href='https://github.com/InesAlmeida-91'><GitHubIcon/></a>
+                        <LinkedInIcon/>
+                        Inês Almeida 
                     </Grid>
                     <Divider orientation="vertical" flexItem/>
-                    <Grid item xs>
-                        <a href='https://github.com/SchenRinan'>Jan Andrew Schnell <GitHubIcon/></a>
+                    <Grid item xs textAlign='center'>
+                        Jan Schnell
+                        <a href='https://github.com/SchenRinan'><GitHubIcon/></a>
+                        <a href="https://www.linkedin.com/in/janschnell/"><LinkedInIcon/></a>
                     </Grid>
                 </Grid>
             </Typography>
