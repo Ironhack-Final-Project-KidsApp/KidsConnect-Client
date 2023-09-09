@@ -3,7 +3,7 @@ import axios from "axios";
 class UserService {
     constructor() {
         this.api = axios.create({
-            baseURL: process.env.REACT_APP_API_URL || 'https://kidsconnect.cyclic.cloud'
+            baseURL: process.env.REACT_APP_API_URL // || 'https://kidsconnect.cyclic.cloud'
         });
 
         this.api.interceptors.request.use(config => {
@@ -42,7 +42,7 @@ class UserService {
     }
 
     removeFavoriteActivity = (activityId) => {
-      return this.api.post(`/user/${activityId}/removefavorite`);
+      return this.api.delete(`/user/${activityId}/removefavorite`);
     }
 
 }

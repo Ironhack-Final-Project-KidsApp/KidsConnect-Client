@@ -1,73 +1,85 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
-import userService from '../services/user.services';
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import activityService from '../services/activity.services';
-import { AuthContext } from '../context/auth.context';
+import FavoriteButton from "../components/FavoriteButton";
+import Ratings from "../components/Ratings";
+import { AuthContext } from "../context/auth.context";
+import DeleteActivity from "../components/DeleteActivity";
+import { Container } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import CardMedia from '@mui/material/CardMedia';
+
 
 const ActivitiesDetailsPage = () => {
-    const authContext = useContext(AuthContext);
-    const { user } = authContext;
-    const { idActivity } = useParams();
-    const [activity, setActivity] = useState(null);
-    const [isFavorite, setIsFavorite] = useState(false);
+  const authContext = useContext(AuthContext);
+  const { user } = authContext;
+  const { idactivity } = useParams();
+  const [activity, setActivity] = useState(null);
 
-    console.log('user is:', user)
-    console.log('activity is:', idActivity)
-    
-    //fetch activity details - done
-    useEffect(() => {
-      activityService.getActivity(idActivity)
+  useEffect(() => {
+    activityService.getActivity(idactivity)
       .then((response) => {
-        console.log(response.data)
         setActivity(response.data)
       })
       .catch((error) => {
         console.log(error);
       });
-    }, [idActivity])
 
-    if (!activity) {
-      return <p>Loading...</p>;
-    }
+  }, [idactivity]);
 
-    //handle the favorite button
-    const handleFavoriteButton = () => {
-      try {
-        if (isFavorite) {
-          userService.removeFavoriteActivity(idActivity)
-            .then(() => setIsFavorite(false))
-            .catch((err) => console.error(err));
-        } else {
-          userService.addFavoriteActivity(idActivity)
-            .then(() => setIsFavorite(true))
-            .catch((err) => console.error(err));
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-     
 
-//display activity details
-//display button to add and remove the activity from the favourites depending on the user id    
-return (
-        <div>
-            {activity && (
-                <>
-                    <img src={activity?.image} alt="activity-img" />
-                    <h1>{activity?.title}</h1>
-                    <p>Description: {activity?.description}</p>
-                    <p>Stroller: {activity?.stroller}</p>
-                    <p>Min. Age: {activity?.ageMin}</p>
-                    <p>Max. Age: {activity?.ageMax}</p>
-                    <p>Location: {activity?.location}</p>
-                    <button onClick={handleFavoriteButton}>
-                        {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-                    </button>
-                </>
-            )}
-        </div>
-    );
+  if (!activity) {
+    return <p>Loading...</p>;
+  }
+
+  return (
+    <div>
+    <Container maxWidth="xl" style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+    <Card sx={{ width: '90%', margin:8, background: "#c0c1c014"}}>
+    
+    {activity && (
+      <>
+    <CardContent>
+            <Typography gutterBottom variant="h3" component="div" sx={{ fontWeight: "700", color: "#00000", fontSize: "2rem", textTransform: "uppercase" }}>
+              {activity?.title}
+            </Typography>         
+    </CardContent>
+
+    <CardMedia
+          component="img"
+          alt="itinerary pic"
+          height="600"
+          image={activity?.activityImage}
+          style={{objectFit:'cover'}}
+        /> 
+            
+
+      
+    
+          <p>Description: {activity?.description}</p>
+          <p>Stroller Accesible: {activity?.stroller ? "Yes" : "No"}</p>
+          <p>Min. Age: {activity?.ageMin}</p>
+          <p>Max. Age: {activity?.ageMax}</p>
+          <p>Location: {activity?.location}</p>
+          <p>Priced: {activity?.priced ? "Yes" : "No"}</p>
+          <p>Venue type: {activity?.venuetype}</p>
+          <FavoriteButton idactivity={idactivity} />
+          <Ratings idactivity={idactivity} />
+          {activity?.author?.name && <p>Author: {activity.author.name}</p>}
+          {activity.author?._id === user._id ?
+          <div>
+            <DeleteActivity idactivity={idactivity} userid={user._id} />
+            <br />
+            <Link to='./edit'><button>Edit Activity</button></Link>
+          </div> :<></> }
+        </>
+      )}
+      </Card>
+      </Container>
+    </div>
+  );
 };
 
 export default ActivitiesDetailsPage;

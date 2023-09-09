@@ -3,7 +3,7 @@ import axios from "axios";
 class ActivityServices {
   constructor() {
     this.api = axios.create({
-        baseURL: process.env.REACT_APP_API_URL || 'https://kidsconnect.cyclic.cloud'
+        baseURL: process.env.REACT_APP_API_URL //|| 'https://kidsconnect.cyclic.cloud'
     });
 
     this.api.interceptors.request.use((config) => {
@@ -16,6 +16,10 @@ class ActivityServices {
       return config;
     });
   }
+
+  uploadActivityImage = (file) => {
+    return this.api.post('/upload-activity-image', file);
+  };
 
   createActivity = (requestBody) => {
     return this.api.post("/activity", requestBody);

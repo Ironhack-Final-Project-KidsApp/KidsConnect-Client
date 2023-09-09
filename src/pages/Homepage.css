@@ -1,0 +1,22 @@
+.Homepage{
+    /* padding: 10px; */
+    max-width: 100%;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+.Homepage img{
+    max-width: 80vw;
+}
+
+#home-usertips{
+    padding: 20px 0;
+}
+
+#home-getstarted{
+    padding: 20px 0;
+}
+
+#home-logo{
+    padding: 25px 0;
+}
