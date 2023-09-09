@@ -143,7 +143,6 @@ function ProfilePage() {
             </CardContent>
           </Card>
 
-          
         <Typography sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} gutterBottom variant="h4" component="div">
           {user.name}'s Created Activities
         </Typography>
@@ -160,7 +159,6 @@ function ProfilePage() {
               <Typography>Loading</Typography>
             )}
         </div>
-
         <Typography sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} gutterBottom variant="h4" component="div">
           {user.name}'s Favorites
         </Typography>

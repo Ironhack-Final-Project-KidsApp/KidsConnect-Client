@@ -13,8 +13,6 @@ import PersonIcon from '@mui/icons-material/Person';
 import CreateIcon from '@mui/icons-material/Create';
 import HomeIcon from '@mui/icons-material/Home';
 
-//check module 3 week 3 to use the is active feature from navlink
-
 function Navbar() {
   const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -88,12 +86,6 @@ function Navbar() {
       </List>
     </Box>
   );
-  //end of mui drawer function
-
-  // const handleLogout = () => {
-  //   logOutUser();
-  //   navigate("/");
-  // };
 
   return (
     <AppBar position="sticky" sx={{backgroundColor:'white'}}>
