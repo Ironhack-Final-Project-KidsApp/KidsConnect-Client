@@ -20,7 +20,7 @@ function Footer() {
                 <Grid container spacing={2} sx={{display:'flex', alignItems:'center'}}>
                     <Grid item xs textAlign='center'>
                         <a href='https://github.com/InesAlmeida-91'><GitHubIcon/></a>
-                        <LinkedInIcon/>
+                        <a href="https://www.linkedin.com/in/in%C3%AAs-almeida-b34ab827b/"><LinkedInIcon/></a>
                         Inês Almeida 
                     </Grid>
                     <Divider orientation="vertical" flexItem/>

@@ -1,7 +1,8 @@
 .Homepage{
-    padding: 10px;
+    /* padding: 10px; */
     max-width: 100%;
     text-align: center;
+    background-color: aliceblue;
 }
 
 .Homepage img{
@@ -9,8 +10,13 @@
 }
 
 #home-usertips{
-    background-color: blueviolet;
-    color: white;
     padding: 20px 0;
 }
 
+#home-getstarted{
+    padding: 20px 0;
+}
+
+#home-logo{
+    padding: 25px 0;
+}
