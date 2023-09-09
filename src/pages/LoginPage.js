@@ -32,7 +32,7 @@ function LoginPage() {
             setErrorMessage(errorMessage)})
     }
     return(
-        <Container component="main" maxWidth="xs">
+        <Container component="form" onSubmit={handleSubmit} maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -49,10 +49,10 @@ function LoginPage() {
             Log In
           </Typography>
           { errorMessage && <p>{errorMessage}</p> }
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box  noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
-              required='true'
+              required
               fullWidth
               id="email"
               label="Email Address"

@@ -51,8 +51,9 @@ const Ratings = ({ idactivity }) => {
 
     return (
         <div>
-          <Rating onClick={(e) => handelRateClick(e.target.value)} value={rating && rating} size="large" />
-
+          {rating > 1 && <Rating onClick={(e) => handelRateClick(e.target.value)} value={rating} size="large" />}
+          {!rating && <Rating onClick={(e) => handelRateClick(e.target.value)} size="large" />}
+          {averageRating > 1 && <p>Average Rating: {averageRating}</p>}
 
         {/* {[...Array(5)].map((star, index) => {
             const currentRating = index + 1;
@@ -69,7 +70,7 @@ const Ratings = ({ idactivity }) => {
             );
         })} */}
         
-        {averageRating > 1 && <p>Average Rating: {averageRating}</p>}
+        
         </div>
     )
 }
