@@ -24,19 +24,19 @@ function AllActivitiesList() {
     }
   
     return (
-      <div>
-        <SearchBar activitiesList={activitiesList} setActivitiesList={setActivitiesList} />
-  
-        {activitiesList.length === 0 ? (
-        <p>No activities found</p>
-      ) : (
-        <div className="card-container">
+    <div>
+      <SearchBar activitiesList={activitiesList} setActivitiesList={setActivitiesList} />
 
-          {activitiesList.map(activity => (
-            <ActivityCard key={activity._id} activity={activity} />
-          ))}
-        </div>
-      )}
+      {activitiesList.length === 0 ? (
+      <p>No activities found</p>
+    ) : (
+      <div className="card-container">
+
+        {activitiesList.map(activity => (
+          <ActivityCard key={activity._id} activity={activity} />
+        ))}
+      </div>
+    )}
     </div>
   );
 }

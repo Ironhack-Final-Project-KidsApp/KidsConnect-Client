@@ -45,7 +45,7 @@ function SignupPage(props) {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          { errorMessage && <p>{errorMessage}</p> }
+          { errorMessage && <Typography component="h1" variant="h5">{errorMessage}</Typography> }
           <Box noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>

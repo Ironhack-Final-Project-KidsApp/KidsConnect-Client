@@ -15,8 +15,7 @@ function Footer() {
         }}
         >
           <Container maxWidth="sm">
-            <Typography variant="body1">
-                {/* Made by */}
+            <Typography component='span' variant="body1">
                 <Grid container spacing={2} sx={{display:'flex', alignItems:'center'}}>
                     <Grid item xs textAlign='center'>
                         <a href='https://github.com/InesAlmeida-91'><GitHubIcon/></a>

@@ -62,7 +62,7 @@ const EditActivitiesPage = () => {
             <Typography component="h1" variant="h4" align="center">
                 Edit Activity
             </Typography>
-            {errorMessage && <Typography component="p" variant="p" align="center">{errorMessage}</Typography>}
+            {errorMessage && <Typography component="h1" variant="h4" align="center">{errorMessage}</Typography>}
             <Grid container spacing={1}>
                 <Grid item xs={12}>
                     <TextField

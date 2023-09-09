@@ -48,7 +48,7 @@ function LoginPage() {
           <Typography component="h1" variant="h5">
             Log In
           </Typography>
-          { errorMessage && <p>{errorMessage}</p> }
+          { errorMessage && <Typography component="h1" variant="h5">{errorMessage}</Typography> }
           <Box  noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
