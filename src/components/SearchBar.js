@@ -3,6 +3,7 @@ import './SearchBar.css'
 import { Search } from "@mui/icons-material";
 import { Accordion, AccordionDetails, AccordionSummary, Button, Container, InputAdornment, TextField, Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import GoogleMaps from "./GoogleMaps";
 
 function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState({title: '', stroller: '', age:0, venuetype: '', priced:''});
@@ -56,6 +57,9 @@ function SearchBar(props) {
       //className="input-wrapper"
       // onSubmit={handleSubmit}
       > */}
+      <Container sx={{paddingBottom:'20px'}}>
+        <GoogleMaps activity={props.activitiesList.filter(fil => fil.lat).map(e=>{return {lat:e.lat, lng:e.lng, _id:e._id}})} />
+      </Container>
         <Container>
           <TextField
             id="outlined-search" 

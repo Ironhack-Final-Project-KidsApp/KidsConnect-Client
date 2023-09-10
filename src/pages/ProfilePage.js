@@ -54,7 +54,7 @@ function ProfilePage() {
     userService.getUser(user._id)
       .then(response => {
         //console.log("response is:", response.data.favorite)
-        setUser({...userProfile, favorite: response.data.favorite.reverse(), image: response.data.image})
+        setUser({favorite: response.data.favorite.reverse(), image: response.data.image})
       })
       .catch((err) => {const errorMessage = err?.response?.data?.message ?? 'Internal error'; setErrorMessage(errorMessage)});
     userService.getActivity(user._id)
@@ -62,7 +62,7 @@ function ProfilePage() {
         setActivity(response.data.reverse())
       })
       .catch((err) => {const errorMessage = err?.response?.data?.message ?? 'Internal error'; setErrorMessage(errorMessage)});
-  }, [user._id, userProfile])
+  }, [user._id])
 
   return (
     <Container maxWidth="xl" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px', marginBottom: '20px' }}>
