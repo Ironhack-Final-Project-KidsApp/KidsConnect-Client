@@ -10,6 +10,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
+import { Chip, Box } from '@mui/material';
+
 
 
 const ActivitiesDetailsPage = () => {
@@ -42,32 +44,62 @@ const ActivitiesDetailsPage = () => {
     {activity && (
       <>
     <CardContent>
-            <Typography gutterBottom variant="h3" component="div" sx={{ fontWeight: "700", color: "#00000", fontSize: "2rem", textTransform: "uppercase" }}>
+            <Typography gutterBottom variant="h3" component="div" sx={{ fontWeight: "700", color: "#00000", fontSize: "2rem", textTransform: "uppercase", textAlign: "center" }}>
               {activity?.title}
             </Typography>         
     </CardContent>
 
-    <CardMedia
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <CardMedia
           component="img"
-          alt="itinerary pic"
-          height="600"
+          alt="activity img"
+          height="300"
+          width="auto"
           image={activity?.activityImage}
-          style={{objectFit:'cover'}}
-        /> 
+          style={{ objectFit: 'fill', maxWidth: '100%'}}
+          sx={{
+            '@media (min-width: 768px)': { height: 300, width: 'auto'}}}
+        />
+    </div>
             
-
+      <CardContent>
+          <Typography variant="body2" color="text.secondary" style={{textAlign:'end'}}>
+            <Chip sx={{ bgcolor: "#FFD700", color: "#000000" }} label={activity?.author?.name ? `Author: ${activity.author.name}` : ''}/>        
+          </Typography>
+      </CardContent>
       
-    
-          <p>Description: {activity?.description}</p>
-          <p>Stroller Accesible: {activity?.stroller ? "Yes" : "No"}</p>
-          <p>Min. Age: {activity?.ageMin}</p>
-          <p>Max. Age: {activity?.ageMax}</p>
-          <p>Location: {activity?.location}</p>
-          <p>Priced: {activity?.priced ? "Yes" : "No"}</p>
-          <p>Venue type: {activity?.venuetype}</p>
+      <CardContent>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Typography variant="body2" color="text.secondary">
+                    <p>
+                      <span style={{ fontWeight: 'bold' }}>Description:</span> {activity?.description}
+                    </p>
+                    <p>
+                      <span style={{ fontWeight: 'bold' }}>Stroller Accessible:</span> {activity?.stroller ? 'Yes' : 'No'}
+                    </p>
+                    <p>
+                      <span style={{ fontWeight: 'bold' }}>Min. Age:</span> {activity?.ageMin}
+                    </p>
+                    <p>
+                      <span style={{ fontWeight: 'bold' }}>Max. Age:</span> {activity?.ageMax}
+                    </p>
+                    <p>
+                      <span style={{ fontWeight: 'bold' }}>Location:</span> {activity?.location}
+                    </p>
+                    <p>
+                      <span style={{ fontWeight: 'bold' }}>Priced:</span> {activity?.priced ? 'Yes' : 'No'}
+                    </p>
+                    <p>
+                      <span style={{ fontWeight: 'bold' }}>Venue type:</span> {activity?.venuetype}
+                    </p>
+                    
+                  </Typography>
+                </Box>
+              </CardContent>
+
+            <Ratings idactivity={idactivity} />
           <FavoriteButton idactivity={idactivity} />
-          <Ratings idactivity={idactivity} />
-          {activity?.author?.name && <p>Author: {activity.author.name}</p>}
+
           {activity.author?._id === user._id ?
           <div>
             <DeleteActivity idactivity={idactivity} userid={user._id} />
@@ -76,6 +108,8 @@ const ActivitiesDetailsPage = () => {
           </div> :<></> }
         </>
       )}
+
+
       </Card>
       </Container>
     </div>

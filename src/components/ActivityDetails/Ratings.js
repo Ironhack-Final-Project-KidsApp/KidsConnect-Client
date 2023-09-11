@@ -1,17 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-// import { FaStar } from 'react-icons/fa';
-// import './Rating.css';
 import rateService from "../../services/rate.services";
 import { Rating } from "@mui/material";
 
 const Ratings = ({ idactivity }) => {
     const [rating, setRating] = useState(null);
-    // const [hover, setHover] = useState()
     const [averageRating, setAverageRating] = useState(null);
 
-    // const onUpdateAverageRating = () => {
-    //   fetchAverageRating();
-    // };
     const fetchAverageRating = useCallback(() => {
       rateService.avarageRate(idactivity)
         .then((response) => {
@@ -51,26 +45,9 @@ const Ratings = ({ idactivity }) => {
 
     return (
         <div>
-          {rating > 1 && <Rating onClick={(e) => handelRateClick(e.target.value)} value={rating} size="large" />}
-          {!rating && <Rating onClick={(e) => handelRateClick(e.target.value)} size="large" />}
-          {averageRating > 1 && <p>Average Rating: {averageRating}</p>}
-
-        {/* {[...Array(5)].map((star, index) => {
-            const currentRating = index + 1;
-            return(
-                <label key={currentRating}>
-                <input id='starradio' type="radio" name="rating" value={currentRating} onClick={() => handelRateClick(currentRating)}/>
-                <FaStar 
-                className='star' 
-                size={20} 
-                color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"} 
-                onMouseEnter={() => setHover(currentRating)}
-                onMouseLeave={() => setHover(null)} />  
-                </label>
-            );
-        })} */}
-        
-        
+          {averageRating > 1 && <p>Average Rating: {averageRating}</p>} 
+          {rating > 1 && <Rating onClick={(e) => handelRateClick(e.target.value)} value={rating} size="small" />}
+          {!rating && <Rating onClick={(e) => handelRateClick(e.target.value)} size="small" />}
         </div>
     )
 }
