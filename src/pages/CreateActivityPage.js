@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, Paper, TextField, Typography, styled } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CheckIcon from '@mui/icons-material/Check';
+import GoogleMapsAutofill from "../components/CreateActivity/GoogleMapsAutofill";
 
 const CreateActivityPage = () => {
   const navigate = useNavigate();
@@ -66,6 +67,7 @@ const CreateActivityPage = () => {
             label="Title"
             fullWidth
             variant="standard"
+            required
             onChange={e=>setActivity({...activity, title: e.target.value})}
           />
         </Grid>
@@ -73,7 +75,7 @@ const CreateActivityPage = () => {
           <TextField
             required
             type='number'
-            InputProps={{ inputProps: { min: 0 } }}
+            InputProps={{ inputProps: { min: 0 }}}
             id="ageMin"
             name="ageMin"
             label="Minimum Age"
@@ -108,17 +110,6 @@ const CreateActivityPage = () => {
             onChange={e=>setActivity({...activity, description: e.target.value})}
           />
         </Grid>
-        <Grid item xs={12}>
-          <TextField
-            id="location"
-            name="location"
-            label="Location"
-            fullWidth
-            required
-            variant="standard"
-            onChange={e=>setActivity({...activity, location: e.target.value})}
-          />
-        </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
             id="venuetype"
@@ -136,6 +127,18 @@ const CreateActivityPage = () => {
             <MenuItem value='indoor'>Indoor</MenuItem>
             <MenuItem value='outdoor'>Outdoor</MenuItem>
           </TextField>
+        </Grid>
+        <Grid item xs={12}>
+          <GoogleMapsAutofill activity={activity} setActivity={setActivity} />
+          {/* <TextField
+            id="location"
+            name="location"
+            label="Location"
+            fullWidth
+            required
+            variant="standard"
+            onChange={e=>setActivity({...activity, location: e.target.value})}
+          /> */}
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel

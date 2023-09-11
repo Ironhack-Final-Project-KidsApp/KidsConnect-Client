@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import activityService from '../services/activity.services';
-import SearchBar from "../components/SearchBar";
-import ActivityCard from "../components/ActivityCard";
+import SearchBar from "../components/Homepage/SearchBar";
+import ActivityCard from "../components/Homepage/ActivityCard";
 import './AllActivitiesList.css';
   
 function AllActivitiesList() {
@@ -18,6 +18,7 @@ function AllActivitiesList() {
         .catch((error) => {
           console.log(error);
         });
+        // console.log(activitiesList.filter(fil => fil.lat).map(e=>{return {lat:e.lat, lng:e.lng}}))
     }, []);
     if (!isLoading) {
       return <p>Loading...</p>;
@@ -25,6 +26,7 @@ function AllActivitiesList() {
   
     return (
     <div>
+      
       <SearchBar activitiesList={activitiesList} setActivitiesList={setActivitiesList} />
 
       {activitiesList.length === 0 ? (
