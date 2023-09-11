@@ -5,11 +5,11 @@ import { AuthContext } from "../context/auth.context";
 import AllActivitiesList from "./AllActivitiesList";
 import logo from'../assets/logo2-removebg-preview.png'
 // import KidsParkImg from '../assets/kids-park.jpg';
-import { Box, Button, Card, CardContent, CardMedia, Container, Divider, Grid, Paper, Stack, Typography } from "@mui/material";
+import { Button, Divider } from "@mui/material";
 import './Homepage.css';
 import { Link, useNavigate } from "react-router-dom";
 import CarouselHome from "../components/Homepage/CarouselHome";
-import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
+// import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import HomeDescription from "../components/Homepage/HomeDescription";
 
 

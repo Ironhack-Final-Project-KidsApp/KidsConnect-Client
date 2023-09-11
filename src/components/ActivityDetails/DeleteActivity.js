@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import activityService from "../services/activity.services";
+import activityService from "../../services/activity.services";
 
 const DeleteActivity = (props) => {
 
