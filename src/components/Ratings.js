@@ -16,7 +16,7 @@ const Ratings = ({ idactivity }) => {
       rateService.avarageRate(idactivity)
         .then((response) => {
           // console.log('rate response', response.data.result)
-          setAverageRating(response.data.result);
+          setAverageRating((Math.floor(response.data.result*10)/10));
         })
         .catch((error) => {
           console.error("Error fetching average rating:", error);
