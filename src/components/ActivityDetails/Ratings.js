@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import rateService from "../../services/rate.services";
-import { Rating } from "@mui/material";
+import { Rating, Box } from "@mui/material";
+import Typography from '@mui/material/Typography';
 
 const Ratings = ({ idactivity }) => {
     const [rating, setRating] = useState(null);
@@ -44,11 +45,26 @@ const Ratings = ({ idactivity }) => {
     }
 
     return (
-        <div>
-          {averageRating > 1 && <p>Average Rating: {averageRating}</p>} 
-          {rating > 1 && <Rating onClick={(e) => handelRateClick(e.target.value)} value={rating} size="small" />}
-          {!rating && <Rating onClick={(e) => handelRateClick(e.target.value)} size="small" />}
-        </div>
+      <div>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          {rating >= 1 && (
+            <Rating onClick={(e) => handelRateClick(e.target.value)} value={rating} size="small" />
+          )}
+          {averageRating >= 1 && (
+            <Typography variant="body2">
+              Average Rating: {averageRating}
+            </Typography>
+          )}
+          {!rating && (
+            <Rating onClick={(e) => handelRateClick(e.target.value)} size="small" />
+          )}
+        </Box>
+    </div>
     )
 }
 
