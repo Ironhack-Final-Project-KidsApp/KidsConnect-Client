@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import activityService from '../services/activity.services';
-import SearchBar from "../components/SearchBar";
-import ActivityCard from "../components/ActivityCard";
+import SearchBar from "../components/Homepage/SearchBar";
+import ActivityCard from "../components/Homepage/ActivityCard";
 import './AllActivitiesList.css';
-import GoogleMaps from "../components/GoogleMaps";
   
 function AllActivitiesList() {
     const [activitiesList, setActivitiesList] = useState([]);

@@ -1,6 +1,6 @@
 import { useEffect, useState,useContext } from "react";
-import userService from '../services/user.services';
-import { AuthContext } from '../context/auth.context';
+import userService from '../../services/user.services';
+import { AuthContext } from '../../context/auth.context';
 
 const FavoriteButton = ({ idactivity }) => {
     const [isFavorite, setIsFavorite] = useState(false);

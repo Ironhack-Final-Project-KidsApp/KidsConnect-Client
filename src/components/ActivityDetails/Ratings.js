@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 // import { FaStar } from 'react-icons/fa';
 // import './Rating.css';
-import rateService from "../services/rate.services";
+import rateService from "../../services/rate.services";
 import { Rating } from "@mui/material";
 
 const Ratings = ({ idactivity }) => {

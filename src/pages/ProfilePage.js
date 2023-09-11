@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/auth.context';
 import userService from '../services/user.services';
-import ActivityCard from '../components/ActivityCard';
+import ActivityCard from '../components/Homepage/ActivityCard';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';

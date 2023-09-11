@@ -1,7 +1,5 @@
-import { Box, Popper } from '@mui/material';
-import { GoogleMap, Marker, MarkerClusterer, MarkerClustererF, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, Marker, MarkerClustererF, useJsApiLoader } from '@react-google-maps/api';
 import { useCallback, useEffect, useState } from 'react';
-import GooglemapsPopover from './GooglemapsPopover';
 import { useNavigate } from 'react-router-dom';
 
 const GoogleMaps = ({activity}) => {
@@ -32,10 +30,11 @@ const GoogleMaps = ({activity}) => {
   }, [])
   
   useEffect(()=>{
-      setTimeout(() => {
-          setMark(activity)    
-      }, 1000);
-  },[])
+    setTimeout(() => {
+      if(map){}
+      setMark(activity)    
+    }, 1000);
+  },[map, activity])
 
   return isLoaded ? (
       <GoogleMap
@@ -50,7 +49,7 @@ const GoogleMaps = ({activity}) => {
           {clusterer => activityMark.map(item=>
           <>
           {/* <GooglemapsPopover title={item.title} position={{lat:item.lat, lng:item.lng}} clusterer={clusterer} /> */}
-          <Marker position={{lat:item.lat, lng:item.lng}} clusterer={clusterer} onClick={e=>navigate(`activity/${item._id}`)}/>
+          <Marker key={item._id} position={{lat:item.lat, lng:item.lng}} clusterer={clusterer} onClick={e=>navigate(`activity/${item._id}`)}/>
           </>
           )}
           </MarkerClustererF>

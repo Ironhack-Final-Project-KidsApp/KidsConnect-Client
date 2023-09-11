@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import activityService from '../services/activity.services';
-import FavoriteButton from "../components/FavoriteButton";
-import Ratings from "../components/Ratings";
+import FavoriteButton from "../components/ActivityDetails/FavoriteButton";
+import Ratings from "../components/ActivityDetails/Ratings";
 import { AuthContext } from "../context/auth.context";
-import DeleteActivity from "../components/DeleteActivity";
+import DeleteActivity from "../components/ActivityDetails/DeleteActivity";
 import { Container } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';

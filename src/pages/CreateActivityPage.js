@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, Paper, TextField, Typography, styled } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CheckIcon from '@mui/icons-material/Check';
-import GoogleMapsAutofill from "../components/GoogleMapsAutofill";
+import GoogleMapsAutofill from "../components/CreateActivity/GoogleMapsAutofill";
 
 const CreateActivityPage = () => {
   const navigate = useNavigate();
