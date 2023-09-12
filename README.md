@@ -2,11 +2,11 @@
 
 ![KidsConnect Logo](/src/assets/logo2.png)
 
-- **check the app here**
+Check the project here!
 
-## Welcome to KidsConnect Explore and Play!
+## Welcome to KidsConnect!
 
-KidsConnect Explore and Play was created with the aim of offering a list of activities from around the world, providing your children with endless opportunities for exploration and fun. We invite you to become an active part of our community by contributing your favorite activities. Share the awesome experiences you know by adding them to our app, allowing others to discover and enjoy them too
+KidsConnect Explore and Play was created with the aim of offering a list of activities from around the world, providing your children with endless opportunities for exploration and fun. We invite you to become an active part of our community by contributing your favorite activities. Share the awesome experiences you know by adding them to our app, allowing others to discover and enjoy them too.
 
 ### Discover Activities
 
