@@ -38,24 +38,22 @@ const ActivitiesDetailsPage = () => {
   return (
     <div>
     <Container maxWidth="xl" style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-    <Card sx={{ width: '90%', margin:8, background: "#c0c1c014"}}>
+    <Card sx={{ width: '90%', margin:8, background: "#c0c1c014", '@media (min-width: 768px)': { width: '60%' }  }}>
     
     {activity && (
       <>
     <CardContent>
             <Typography gutterBottom variant="h3" component="div" sx={{ fontWeight: "700", color: "#00000", fontSize: "2rem", textTransform: "uppercase", textAlign: "center" }}>
               {activity?.title}
-            </Typography>     
-            <Typography variant="body2" color="text.secondary" style={{textAlign:'center'}}>
-            <Chip sx={{ bgcolor: "#FFD700", color: "#000000" }} label={activity?.author?.name ? `By: ${activity.author.name}` : ''}/>        
-          </Typography>    
+            </Typography> 
+            <Box sx={{ textAlign: "center", mt: 2, }}>
+              <FavoriteButton idactivity={idactivity} />
+            </Box>     
     </CardContent>
 
-    <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
+    
+
+    <Box display="flex" justifyContent="center" alignItems="center">
         <CardMedia
           component="img"
           alt="activity img"
@@ -63,13 +61,29 @@ const ActivitiesDetailsPage = () => {
           width="auto"
           image={activity?.activityImage}
           style={{ objectFit: 'fill', maxWidth: '100%' }}
-          sx={{
-            '@media (min-width: 768px)': { height: 300, width: 'auto' },
-          }}
-        />
+          sx={{ '@media (min-width: 768px)': { height: 300, width: 'auto' },}}/>
       </Box>
-            
-      
+
+      <CardContent>
+  <Typography
+    variant="body2"
+    color="text.secondary"
+    sx={{
+      textAlign: 'right',
+      marginRight: {
+        xs: 0,
+        sm: 0,
+        md: '20%',
+      },
+    }}
+  >
+    <Chip
+      sx={{ bgcolor: "#add8e6", color: "#000000" }}
+      label={activity?.author?.name ? `By: ${activity.author.name}` : ''}
+    />
+  </Typography> 
+      </CardContent>  
+
     <CardContent>
       <Divider Divider textAlign="center" style={{width:'100%'}}>
         DESCRIPTION
@@ -81,60 +95,53 @@ const ActivitiesDetailsPage = () => {
 
 
     <CardContent>
-  <Divider style={{ textAlign: 'center', width: '100%' }}>
-    DETAILS
-  </Divider>
-  <Typography variant="body2" style={{ textAlign: 'center' }}>
-    <Typography variant="body2" fontWeight="bold">
-      Stroller Accessible:
-    </Typography>
-    {activity?.stroller ? 'Yes' : 'No'}
+      <Divider style={{ textAlign: 'center', width: '100%' }}>
+        DETAILS
+      </Divider>
+      <Typography variant="body2" style={{ textAlign: 'center' }}>
+        <Typography variant="body2" fontWeight="bold">
+          Stroller Accessible:
+        </Typography>
+        {activity?.stroller ? 'Yes' : 'No'}
 
-    <Typography variant="body2" fontWeight="bold">
-      Min. Age:
-    </Typography>
-    {activity?.ageMin}
+        <Typography variant="body2" fontWeight="bold">
+          Min. Age:
+        </Typography>
+        {activity?.ageMin}
 
-    <Typography variant="body2" fontWeight="bold">
-      Max. Age:
-    </Typography>
-    {activity?.ageMax}
+        <Typography variant="body2" fontWeight="bold">
+          Max. Age:
+        </Typography>
+        {activity?.ageMax}
 
-    <Typography variant="body2" fontWeight="bold">
-      Priced:
-    </Typography>
-    {activity?.priced ? 'Yes' : 'No'}
+        <Typography variant="body2" fontWeight="bold">
+          Priced:
+        </Typography>
+        {activity?.priced ? 'Yes' : 'No'}
 
-    <Typography variant="body2" fontWeight="bold">
-      Venue type:
-    </Typography>
-    {activity?.venuetype}
+        <Typography variant="body2" fontWeight="bold">
+          Venue type:
+        </Typography>
+        {activity?.venuetype}
 
-    <Typography variant="body2" fontWeight="bold">
-      Location:
-    </Typography>
-    {activity?.location}
-  </Typography>
-</CardContent>
+        <Typography variant="body2" fontWeight="bold">
+          Location:
+        </Typography>
+        {activity?.location}
+      </Typography>
+    </CardContent>
 
 
-  <CardContent>
-    <Divider style={{ textAlign: 'center', width: '100%' }}>
-      RATING
-    </Divider>
-    <Grid container justifyContent="center">
-    <Ratings idactivity={idactivity} />
-    </Grid>
-  </CardContent>
-
-          <FavoriteButton idactivity={idactivity} />
-
-          <Box
-                sx={{
-                  textAlign: 'center',
-                  mt: 2,
-                }}
-              >
+    <CardContent>
+      <Divider style={{ textAlign: 'center', width: '100%' }}>
+        RATING
+      </Divider>
+      <Grid container justifyContent="center">
+      <Ratings idactivity={idactivity} />
+      </Grid>
+    </CardContent>
+    
+    <Box sx={{ textAlign: 'center', mt: 2, }}>
           {activity.author?._id === user._id ?
           <div>
             <DeleteActivity idactivity={idactivity} userid={user._id} />
@@ -148,7 +155,7 @@ const ActivitiesDetailsPage = () => {
               Edit Activity
             </Button>
           </div> :<></> }
-        </Box>
+    </Box>
         </>
       )}
 

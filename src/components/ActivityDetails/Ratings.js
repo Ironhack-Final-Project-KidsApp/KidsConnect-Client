@@ -53,7 +53,7 @@ const Ratings = ({ idactivity }) => {
           alignItems="center"
         >
           {rating >= 1 && (
-            <Rating onClick={(e) => handelRateClick(e.target.value)} value={rating} size="small" />
+            <Rating onClick={(e) => handelRateClick(e.target.value)} value={rating} size="large" />
           )}
           {averageRating >= 1 && (
             <Typography variant="body2">
@@ -61,7 +61,7 @@ const Ratings = ({ idactivity }) => {
             </Typography>
           )}
           {!rating && (
-            <Rating onClick={(e) => handelRateClick(e.target.value)} size="small" />
+            <Rating onClick={(e) => handelRateClick(e.target.value)} size="large" />
           )}
         </Box>
     </div>

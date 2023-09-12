@@ -1,17 +1,12 @@
-
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-// import CarouselHome from "../components/CarouselHome";
 import AllActivitiesList from "./AllActivitiesList";
 import logo from'../assets/logo2-removebg-preview.png'
-// import KidsParkImg from '../assets/kids-park.jpg';
 import { Button, Divider } from "@mui/material";
 import './Homepage.css';
 import { Link, useNavigate } from "react-router-dom";
 import CarouselHome from "../components/Homepage/CarouselHome";
-// import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import HomeDescription from "../components/Homepage/HomeDescription";
-
 
 function HomePage() {
   const authContext = useContext(AuthContext);
@@ -19,11 +14,10 @@ function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <div>
-           
+    <div>    
       {isLoggedIn ? (
         <div>
-        <h3>Welcome {user?.name}</h3>
+        <h3 style={{ textAlign: 'center', marginTop: '3%' }}>Welcome {user?.name}</h3>
         <br/>
         <AllActivitiesList />
         </div>
@@ -55,17 +49,6 @@ function HomePage() {
             <br />
           </section>
         </div>
-        
-        // <Container  maxWidth="sm">
-        //   <img src={logo} alt="" />
-        // </Container>
-        // <div>
-        //   
-        // <h2>Welcome to KidsConnect!</h2>
-        // <h4>The ultimate app for kids activities.</h4>
-        //     <CarouselHome />
-        //     <p>Explore a world of fun and exciting activities for kids!</p>
-        // </div>
       )}
     </div>
   );

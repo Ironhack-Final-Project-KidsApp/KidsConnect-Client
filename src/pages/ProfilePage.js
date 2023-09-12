@@ -98,7 +98,7 @@ function ProfilePage() {
                   <Button
                     variant="raised"
                     component="span"
-                    sx={{ bgcolor: '#FFD700' }}
+                    sx={{ bgcolor: '#add8e6' }}
                     startIcon={<AddPhotoAlternateIcon />}
                     onClick={() => setShowUpload(!showUpload)}
                   >

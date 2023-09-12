@@ -21,7 +21,7 @@ const GoogleMapsAutofill = ({activity, setActivity}) => {
     useEffect(()=>{
         setTimeout(() => {
             setLoad(true)
-        }, 1000);
+        }, 2000);
     }, [])
     return (
         <>
