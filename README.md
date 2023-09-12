@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# KidsConnect Explore and Play 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![KidsConnect Logo](/src/assets/logo2.png)
 
-## Available Scripts
+Check the project here!
 
-In the project directory, you can run:
+## Welcome to KidsConnect!
 
-### `npm start`
+KidsConnect Explore and Play was created with the aim of offering a list of activities from around the world, providing your children with endless opportunities for exploration and fun. We invite you to become an active part of our community by contributing your favorite activities. Share the awesome experiences you know by adding them to our app, allowing others to discover and enjoy them too.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Discover Activities
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Browse a Variety:** Discover a wide range of activities suitable for children of different ages. Whether your child loves outdoor adventures or indoor crafts, we've got you covered.
 
-### `npm test`
+- **Filtering Options:** Use the filtering options to narrow down your choices. You can filter activities by age group, indoor/outdoor preference, stroller accessibility, and more.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Create Activities
 
-### `npm run build`
+- **Share Your Ideas:** Help the KidsConnect community grow by sharing your own exciting activities. Tap the "Create Activity" button and provide all the necessary details. Your contribution will be available for other parents and children to discover.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Rating System
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Feedback and Ratings:** After trying out activities, you can provide rating. Your feedback helps other parents find the best activities, and it also helps creators improve their content.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Favorites
 
-### `npm run eject`
+- **Create a Favorites List:** Make the most of the app by favoriting activities that your children enjoy. Simply tap the heart icon on an activity details to add it to your favorites list.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Easy Access:** Your favorites list makes it easy to access activities that your kids love. No need to search through the entire catalog every time.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Activity Details
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Get Informed:** When viewing an activity's details, you'll find essential information. Check if it's indoor or outdoor, stroller accessible, age-appropriate, and more.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Informed Decisions:** Explore all the details to make informed decisions. Ensure that the activity matches your child's age, abilities, and your preferences.
 
-## Learn More
+## Links
+- [Trello Link](https://trello.com/b/Dg8I4y1C/kidsconnect-explore-play)
+- [Slides Link](https://docs.google.com/presentation/d/1C7RCGNCp4GQ2grcZDPDyAW-VRrIWoDHnQsYQmK-a3Lw/edit#slide=id.g27ded414c22_0_1)
+- [Github repository Link](https://github.com/Ironhack-Final-Project-KidsApp) 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Used tools
+- JavaScript, MUI, JXS, Node.js, Express.js, React

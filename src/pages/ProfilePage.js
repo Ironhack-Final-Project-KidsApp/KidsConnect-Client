@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/auth.context';
 import userService from '../services/user.services';
-import ActivityCard from '../components/ActivityCard';
+import ActivityCard from '../components/Homepage/ActivityCard';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -54,7 +54,7 @@ function ProfilePage() {
     userService.getUser(user._id)
       .then(response => {
         //console.log("response is:", response.data.favorite)
-        setUser({...userProfile, favorite: response.data.favorite.reverse(), image: response.data.image})
+        setUser({favorite: response.data.favorite.reverse(), image: response.data.image})
       })
       .catch((err) => {const errorMessage = err?.response?.data?.message ?? 'Internal error'; setErrorMessage(errorMessage)});
     userService.getActivity(user._id)
@@ -98,7 +98,7 @@ function ProfilePage() {
                   <Button
                     variant="raised"
                     component="span"
-                    sx={{ bgcolor: '#FFD700' }}
+                    sx={{ bgcolor: '#add8e6' }}
                     startIcon={<AddPhotoAlternateIcon />}
                     onClick={() => setShowUpload(!showUpload)}
                   >

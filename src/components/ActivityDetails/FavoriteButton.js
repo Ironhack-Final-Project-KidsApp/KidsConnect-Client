@@ -1,6 +1,9 @@
 import { useEffect, useState,useContext } from "react";
-import userService from '../services/user.services';
-import { AuthContext } from '../context/auth.context';
+import userService from '../../services/user.services';
+import { AuthContext } from '../../context/auth.context';
+import IconButton from "@mui/material/IconButton";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const FavoriteButton = ({ idactivity }) => {
     const [isFavorite, setIsFavorite] = useState(false);
@@ -34,13 +37,13 @@ const FavoriteButton = ({ idactivity }) => {
         }
       };
      
-    return (
+      return (
         <div>
-            <button onClick={handleFavoriteButton}>
-                        {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-            </button>
+          <IconButton onClick={handleFavoriteButton}>
+            {isFavorite ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}
+          </IconButton>
         </div>
-    )
-}
+      );
+    };
 
 export default FavoriteButton;

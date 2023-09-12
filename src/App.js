@@ -37,8 +37,8 @@ function App() {
         <Route path="/login" element={ <IsAnon> <LoginPage /> </IsAnon>} />
         <Route path="/profile/:idprofile" element={ <IsPrivate> <ProfilePage /> </IsPrivate>} />
         <Route path="/create-activity" element={ <IsPrivate> <CreateActivityPage /> </IsPrivate>} />
-        <Route path='/activity/:idactivity' element={<ActivitiesDetailsPage/>}/> {/* add middleware to protect page */}
-        <Route path='/activity/:idactivity/edit' element={<EditActivitiesPage/>}/> {/* add middleware to protect page */}
+        <Route path='/activity/:idactivity' element={<IsPrivate><ActivitiesDetailsPage/></IsPrivate>}/> {/* add middleware to protect page */}
+        <Route path='/activity/:idactivity/edit' element={<IsPrivate><EditActivitiesPage/></IsPrivate>}/> {/* add middleware to protect page */}
         <Route path="*" element={ <ErrorPage /> } />    
       </Routes>
 
