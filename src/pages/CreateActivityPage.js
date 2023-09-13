@@ -130,15 +130,6 @@ const CreateActivityPage = () => {
         </Grid>
         <Grid item xs={12}>
           <GoogleMapsAutofill activity={activity} setActivity={setActivity} />
-          {/* <TextField
-            id="location"
-            name="location"
-            label="Location"
-            fullWidth
-            required
-            variant="standard"
-            onChange={e=>setActivity({...activity, location: e.target.value})}
-          /> */}
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
@@ -178,41 +169,6 @@ const CreateActivityPage = () => {
       </Button>
     </Paper>
   </Container>
-      // <div>
-      //     <form action="" onSubmit={handleSubmit}>
-      //       <h2>Create Activity:</h2>
-      //         <label htmlFor="">Title:</label>
-      //         <input type="text" onChange={e => setActivity({...activity, title: e.target.value})} required={true} />
-      //         <label htmlFor="">Description</label>
-      //         <input type="text" onChange={e => setActivity({...activity, description: e.target.value})} required />
-      //         <label htmlFor="">Stroller Accesible:</label>
-      //         <input type="checkbox" onChange={e => setActivity({...activity, stroller: e.target.checked})} />
-      //         <label htmlFor="">Minimum Age:</label>
-      //         <input type="number" name="" id="" min={0} onChange={e => setActivity({...activity, ageMin:e.target.value})} />
-      //         <label htmlFor="">Maximum Age:</label>
-      //         <input type="number" name="" id="" min={0} onChange={e => setActivity({...activity, ageMax:e.target.value})} />
-      //         <label htmlFor="">Location:</label>
-      //         <input type="text" name="" id="" onChange={e=> setActivity({...activity, location:e.target.value})} />
-      //         <label htmlFor="">Venue Type:</label>
-      //         <select name="" id="" onChange={e=>setActivity({...activity, venuetype:e.target.value})} required>
-      //             <option value=""></option>
-      //             <option value="outdoor">Outdoor</option>
-      //             <option value="indoor">Indoor</option>
-      //         </select>
-      //         <br />
-      //         <label htmlFor="">Priced:</label>
-      //         <input type="checkbox" onChange={e => setActivity({...activity, priced: e.target.checked})} />
-      //         <br />
-      //         <label htmlFor="">Image:</label>
-      //         <input type="file" name="image" onChange={(e) => handleFileUpload(e)} />
-
-      //         {/* <label htmlFor="">Event</label>
-      //         <input type="text" name="" id="" onChange={e=> setActivity({...activity, event:e.target.value})} />*/}
-
-      //         <button type="submit">Create Activity</button>
-      //     </form>
-      //     {error && <div>{error}</div>}
-      // </div>
   );
 }
 

@@ -38,7 +38,6 @@ const Ratings = ({ idactivity }) => {
             setRating(item);
             fetchAverageRating();
           }
-            
         } catch (error) {
             console.error("Error rating the activity:", error);
         }

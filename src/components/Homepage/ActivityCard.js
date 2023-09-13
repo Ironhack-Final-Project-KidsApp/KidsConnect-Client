@@ -10,7 +10,7 @@ function ActivityCard({ activity }) {
   const authorName = activity?.author?.name || 'Unknown Author';
 
   return (
-    <Card sx={{ width: 250, margin: '10px' }}>
+    <Card sx={{ width: 250, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -18,18 +18,18 @@ function ActivityCard({ activity }) {
           image={activity?.activityImage}
           alt="activity-img"
         />
-        <CardContent>
+        <CardContent sx={{ flexGrow: 1 }}>
           <Typography gutterBottom variant="h5" component="div">
-          {activity?.title}
+            {activity?.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-             Created by:{authorName}
+            Created by: {authorName}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-        <Link to={`/activity/${activity?._id}`}>Check activity!</Link>
+          <Link to={`/activity/${activity?._id}`}>Check activity!</Link>
         </Button>
       </CardActions>
     </Card>

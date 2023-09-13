@@ -3,7 +3,7 @@ import axios from "axios";
 class RateServices {
   constructor() {
     this.api = axios.create({
-        baseURL: process.env.REACT_APP_API_URL || 'https://kidsconnect.cyclic.cloud'
+        baseURL: process.env.REACT_APP_API_URL
     });
 
     this.api.interceptors.request.use((config) => {

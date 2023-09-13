@@ -13,7 +13,6 @@ import Grid from '@mui/material/Grid';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import './ProfilePage.css';
 
 function ProfilePage() {
   const authContext = useContext(AuthContext);
@@ -143,14 +142,16 @@ function ProfilePage() {
             </CardContent>
           </Card>
 
-        <Typography sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} gutterBottom variant="h4" component="div">
-          {user.name}'s Created Activities
-        </Typography>
-        <div className="card-container">
-        {userActivity ? (
+          <Typography sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} gutterBottom variant="h4" component="div">
+            {user.name}'s Created Activities
+          </Typography>
+          <Grid container spacing={2} justifyContent="flex-start" sx={{ margin: '2rem' }}>
+            {userActivity ? (
               userActivity.length > 0 ? (
                 userActivity.map((item) => (
-                  <ActivityCard key={item._id} activity={item} />
+                  <Grid item key={item._id} xs={12} sm={6} md={4} lg={3}>
+                    <ActivityCard activity={item} />
+                  </Grid>
                 ))
               ) : (
                 <Typography>No created activities yet.</Typography>
@@ -158,15 +159,18 @@ function ProfilePage() {
             ) : (
               <Typography>Loading</Typography>
             )}
-        </div>
-        <Typography sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} gutterBottom variant="h4" component="div">
-          {user.name}'s Favorites
-        </Typography>
-        <div className="card-container">
-          {userProfile.favorite ? (
+          </Grid>
+
+          <Typography sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} gutterBottom variant="h4" component="div">
+            {user.name}'s Favorites
+          </Typography>
+          <Grid container spacing={2} justifyContent="flex-start" sx={{ margin: '2rem' }}>
+            {userProfile.favorite ? (
               userProfile.favorite.length > 0 ? (
                 userProfile.favorite.map((item) => (
-                  <ActivityCard key={item._id} activity={item} />
+                  <Grid item key={item._id} xs={12} sm={6} md={4} lg={3}>
+                    <ActivityCard activity={item} />
+                  </Grid>
                 ))
               ) : (
                 <Typography>No favorite activities yet.</Typography>
@@ -174,9 +178,9 @@ function ProfilePage() {
             ) : (
               <Typography>Loading</Typography>
             )}
-        </div>
-      </>
-    )}
+          </Grid>
+        </>
+      )}
     </Container>
   );
 }

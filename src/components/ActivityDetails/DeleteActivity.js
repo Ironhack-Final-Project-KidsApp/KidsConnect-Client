@@ -11,7 +11,6 @@ const DeleteActivity = (props) => {
         navigate(`/profile/${props.userid}`)
     };
 
-    
     return (
         <div>
             <Button

@@ -2,7 +2,7 @@
 
 ![KidsConnect Logo](/src/assets/logo2.png)
 
-Check the project here!
+Check the project [here](https://kidsconnectapp.netlify.app/)!
 
 ## Welcome to KidsConnect!
 
