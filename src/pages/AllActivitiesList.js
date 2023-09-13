@@ -3,6 +3,8 @@ import activityService from '../services/activity.services';
 import SearchBar from "../components/Homepage/SearchBar";
 import ActivityCard from "../components/Homepage/ActivityCard";
 import Grid from '@mui/material/Grid';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
   
 function AllActivitiesList() {
     const [activitiesList, setActivitiesList] = useState([]);
@@ -20,8 +22,13 @@ function AllActivitiesList() {
         });
         // console.log(activitiesList.filter(fil => fil.lat).map(e=>{return {lat:e.lat, lng:e.lng}}))
     }, []);
-    if (!isLoading) {
-      return <p>Loading...</p>;
+
+   if (!isLoading) {
+      return (
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100px' }}>
+          <CircularProgress />
+        </Box>
+      );
     }
   
     return (

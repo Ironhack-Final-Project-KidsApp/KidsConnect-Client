@@ -157,7 +157,9 @@ function ProfilePage() {
                 <Typography>No created activities yet.</Typography>
               )
             ) : (
-              <Typography>Loading</Typography>
+              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100px' }}>
+                <CircularProgress />
+              </Box>
             )}
           </Grid>
 
@@ -176,7 +178,9 @@ function ProfilePage() {
                 <Typography>No favorite activities yet.</Typography>
               )
             ) : (
-              <Typography>Loading</Typography>
+              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100px' }}>
+                <CircularProgress />
+              </Box>
             )}
           </Grid>
         </>

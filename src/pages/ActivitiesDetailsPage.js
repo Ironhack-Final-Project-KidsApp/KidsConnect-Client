@@ -12,6 +12,8 @@ import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import { Chip, Grid, Box, Button } from '@mui/material';
 import Divider from '@mui/material/Divider';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const ActivitiesDetailsPage = () => {
   const authContext = useContext(AuthContext);
@@ -32,7 +34,10 @@ const ActivitiesDetailsPage = () => {
 
 
   if (!activity) {
-    return <p>Loading...</p>;
+    return (<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100px' }}>
+    <CircularProgress />
+  </Box>
+    );
   }
 
   return (
