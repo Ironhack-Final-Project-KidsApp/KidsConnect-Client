@@ -12,10 +12,6 @@ function SignupPage(props) {
 
     const navigate = useNavigate();
 
-    // const handleEmail = (e) => setEmail(e.target.value);
-    // const handlePassword = (e) => setPassword(e.target.value);
-    // const handleName = (e) => setName(e.target.value);
-
     const handleSubmit = (e) => {
         e.preventDefault()
         const requestBody = { email, password, name };
@@ -101,32 +97,7 @@ function SignupPage(props) {
             </Grid>
           </Box>
         </Box>
-      </Container>
-        // <div>
-        //     <h2>Sign up</h2>
-        //         <form onSubmit={handleSubmit}>
-        //             <div>
-        //                 <label>Name</label>
-        //                 <br />
-        //                 <input type="text" name="name" value={name} onChange={handleName}/>
-        //                 <br />
-        //                 <label>Email</label>
-        //                 <br />
-        //                 <input type="text" name="email" value={email}  onChange={handleEmail} />
-        //                 <br />
-        //                 <label>Password</label>
-        //                 <br />
-        //                 <input type="password" name="password" value={password}  onChange={handlePassword} />
-        //                 <br />
-        //             </div>
-        //             <p>By signing up, you agree with all our terms and conditions!</p>
-        //             <button type="submit">Sign up</button>
-        //         </form>
-
-        //         { errorMessage && <p>{errorMessage}</p> }
-
-        //     <p>Already have an account? Please log in here!<Link to="/login">Log in</Link></p>
-        // </div>
+      </Container>  
     )
 }
 

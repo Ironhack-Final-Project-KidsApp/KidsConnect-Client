@@ -1,13 +1,8 @@
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
 import ReactGoogleAutocomplete from "react-google-autocomplete";
 
-
 const GoogleMapsAutofill = ({activity, setActivity}) => {
-    // const [location, setLocation] = useState(null)
-    const [fakeload, setLoad] = useState(false)
-    // const testitem = item =>{
-    //     console.log(item.geometry)
-    // }
+    //const [fakeload, setLoad] = useState(false)
 
     const storeLocation = (item) => {
         if(item && item.formatted_address){
@@ -18,14 +13,14 @@ const GoogleMapsAutofill = ({activity, setActivity}) => {
         // console.log(activity)
     }
 
-    useEffect(()=>{
+    /* useEffect(()=>{
         setTimeout(() => {
             setLoad(true)
         }, 2000);
-    }, [])
+    }, []) */
     return (
         <>
-        {fakeload &&
+        {/* {fakeload && */}
         <ReactGoogleAutocomplete
             onChange={e=>storeLocation(e.target.value)}
             style={{borderStyle:'none none solid none'}}
@@ -37,7 +32,7 @@ const GoogleMapsAutofill = ({activity, setActivity}) => {
             apiKey={'AIzaSyAONiK1AbeIKizfXbLqQ9lhHJo2zKYDLLA'}
             onPlaceSelected={(place) => storeLocation(place)} //place.geometry?.location?.lat()
         />
-        }
+        {/*  */}
         </>
     );
 }

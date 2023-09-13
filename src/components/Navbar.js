@@ -17,7 +17,6 @@ function Navbar() {
   const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-//mui drawer function
   const anchor = 'right';
   const [state, setState] = useState({right: false,});
   const toggleDrawer = (anchor, open) => (event) => {
@@ -117,30 +116,6 @@ function Navbar() {
         
       </Toolbar>
     </AppBar>
-        /* <img src={logo} alt="logo" style={{width: '8rem'}}/>
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <br/>
-          <NavLink to="/usertips">User Tips</NavLink>
-
-          {isLoggedIn && (
-            <div>
-              <NavLink to={`/profile/${user._id}`}>Profile</NavLink>
-              <br/>
-              <NavLink to={`/create-activity`}>Create Activity</NavLink>
-              <br />
-              <button onClick={handleLogout}>Log Out</button>
-            </div> 
-          )}
-          
-          {!isLoggedIn && (
-            <div>
-            <NavLink to="/login">Log in</NavLink>
-            <br/>
-            <NavLink to="/signup">Sign up</NavLink>
-            </div>
-          )}            
-        </nav> */
   );
 }
  

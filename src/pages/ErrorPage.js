@@ -1,10 +1,7 @@
-//use this page to display the error messages
 import React from 'react';
 import { Box, Button, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router-dom';
-
-
 
 function ErrorPage() {
 const navigate = useNavigate();
@@ -34,9 +31,6 @@ const navigate = useNavigate();
         </Grid>
       </Container>
     </Box>
-
-
-    
   );
 }
 

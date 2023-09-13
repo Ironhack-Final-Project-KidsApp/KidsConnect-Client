@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import activityService from '../services/activity.services';
 import SearchBar from "../components/Homepage/SearchBar";
 import ActivityCard from "../components/Homepage/ActivityCard";
-import './AllActivitiesList.css';
+import Grid from '@mui/material/Grid';
   
 function AllActivitiesList() {
     const [activitiesList, setActivitiesList] = useState([]);
@@ -25,22 +25,22 @@ function AllActivitiesList() {
     }
   
     return (
-    <div>
-      
+      <div>
       <SearchBar activitiesList={activitiesList} setActivitiesList={setActivitiesList} />
 
       {activitiesList.length === 0 ? (
-      <p>No activities found</p>
-    ) : (
-      <div className="card-container">
-
-        {activitiesList.map(activity => (
-          <ActivityCard key={activity._id} activity={activity} />
-        ))}
-      </div>
-    )}
-    </div>
-  );
+          <p>No activities found</p>
+      ) : (
+          <Grid container spacing={2} justifyContent="flex-start" sx={{ margin: '2rem' }}>
+              {activitiesList.map(activity => (
+                  <Grid item key={activity._id} xs={12} sm={6} md={4} lg={3}>
+                      <ActivityCard activity={activity} />
+                  </Grid>
+              ))}
+          </Grid>
+      )}
+  </div>
+);
 }
 
 export default AllActivitiesList;

@@ -12,11 +12,7 @@ import ErrorPage from './pages/ErrorPage';
 import { Routes, Route } from 'react-router-dom';
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
-// import './App.css';
 import { Box } from '@mui/material';
-
-
-
 
 function App() {
   return (
