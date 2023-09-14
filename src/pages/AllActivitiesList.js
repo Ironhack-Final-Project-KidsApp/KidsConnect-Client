@@ -5,6 +5,7 @@ import ActivityCard from "../components/Homepage/ActivityCard";
 import Grid from '@mui/material/Grid';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { Container } from "@mui/system";
   
 function AllActivitiesList() {
     const [activitiesList, setActivitiesList] = useState([]);
@@ -38,13 +39,21 @@ function AllActivitiesList() {
       {activitiesList.length === 0 ? (
           <p>No activities found</p>
       ) : (
-          <Grid container spacing={2} justifyContent="flex-start" sx={{ margin: '2rem' }}>
+        <Container sx={{ padding:'30px 0' }}>
+          <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            alignItems='flex-start'
+            justifyContent='center'
+          // sx={{ margin: '2rem' }}
+          >
               {activitiesList.map(activity => (
-                  <Grid item key={activity._id} xs={12} sm={6} md={4} lg={3}>
+                  <Grid item key={activity._id} 
+                  // xs={12} sm={6} md={4} lg={3}
+                  >
                       <ActivityCard activity={activity} />
                   </Grid>
               ))}
           </Grid>
+        </Container>
       )}
   </div>
 );

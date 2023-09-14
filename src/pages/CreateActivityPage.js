@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, Paper, TextField, Typography, styled } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CheckIcon from '@mui/icons-material/Check';
-import GoogleMapsAutofill from "../components/CreateActivity/GoogleMapsAutofill";
+import Autofillgoogle from "../components/CreateActivity/Autofillgoogle";
+
 
 const CreateActivityPage = () => {
   const navigate = useNavigate();
@@ -13,6 +14,9 @@ const CreateActivityPage = () => {
   const {user} = authContext;
   const [activity, setActivity] = useState({author: user._id})
   const [errorMessage, setError] = useState(null)
+  const [location, setLocation] = useState(null)
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null)
 
   const VisuallyHiddenInput = styled('input')`
     clip: rect(0 0 0 0);
@@ -42,12 +46,18 @@ const CreateActivityPage = () => {
     });
   }
 
+
   const handleSubmit = e =>{
-      e.preventDefault();
-      activityService.createActivity(activity)
-        .then(response => navigate(`/profile/${user._id}`))
-        .catch(err=>setError(err.message));
-      console.log(activity)
+    const storeActivity = activity;
+    storeActivity.location = location;
+    storeActivity.lat = lat;
+    storeActivity.lng = lng;
+
+    e.preventDefault();
+    activityService.createActivity(storeActivity)
+      .then(response => navigate(`/profile/${user._id}`))
+      .catch(err=>setError(err.message));
+    console.log(storeActivity)
   }
 
   return (
@@ -129,7 +139,7 @@ const CreateActivityPage = () => {
           </TextField>
         </Grid>
         <Grid item xs={12}>
-          <GoogleMapsAutofill activity={activity} setActivity={setActivity} />
+          <Autofillgoogle setLocation={setLocation} setLat={setLat} setLng={setLng} />
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel

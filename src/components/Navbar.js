@@ -1,7 +1,8 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext, useState } from "react";      
 import { AuthContext } from "../context/auth.context"
-import logo from '../assets/logo.png';
+import logo from '../assets/logo2-removebg-preview.png';
+import smilelogo from '../assets/logo2justsmile.png';
 import { AppBar, Box, Button, Divider, List, ListItemText, SwipeableDrawer, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ListItem from '@mui/material/ListItem';
@@ -56,7 +57,7 @@ function Navbar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Home', 'Profile', 'Create Activity', 'Empty'].map((text, index) => (
+        {['Home', 'Profile', 'Create Activity'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={()=>handleButton(text)}>
               <ListItemIcon>
@@ -71,7 +72,7 @@ function Navbar() {
       </List>
       <Divider />
       <List>
-        {['Empty', 'User Tips', 'Logout'].map((text, index) => (
+        {['User Tips', 'Logout'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={()=>handleButton(text)}>
               <ListItemIcon>
@@ -89,7 +90,10 @@ function Navbar() {
   return (
     <AppBar position="sticky" sx={{backgroundColor:'white'}}>
       <Toolbar  sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'space-between'}}>
-        <NavLink to="/"><img src={logo} alt="logo" style={{width: '8rem'}}/></NavLink>
+        <NavLink to="/">
+          {!isLoggedIn && <img src={smilelogo} alt="logo" style={{width: '3.5rem'}}/>}
+          {isLoggedIn && <img src={logo} alt="logo" style={{height: '4rem'}}/>}
+        </NavLink>
         
         {!isLoggedIn && 
           <NavLink to="/login">

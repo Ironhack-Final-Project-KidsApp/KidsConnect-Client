@@ -46,8 +46,12 @@ const GoogleMaps = ({activity}) => {
           {clusterer => activityMark.map(item=>
           <>
           <Marker key={item._id} position={{lat:item.lat, lng:item.lng}} clusterer={clusterer} onClick={e=>navigate(`activity/${item._id}`)}/>
+          {/* <Marker placeId='ChIJN1t_tDeuEmsRUsoyG83frY4'/> */}
           </>
           )}
+          
+          {/* position={{lat:item.lat, lng:item.lng}} clusterer={clusterer} onClick={e=>navigate(`activity/${item._id}`)}/>
+          ChIJi8MeVwPKlzMRH8FpEHXV0Wk */}
           </MarkerClustererF>
           }
       </GoogleMap>
