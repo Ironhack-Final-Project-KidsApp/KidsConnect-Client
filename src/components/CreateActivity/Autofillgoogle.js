@@ -12,7 +12,7 @@ import { debounce } from '@mui/material/utils';
 // You need to create a new one for your application.
 const GOOGLE_MAPS_API_KEY = 'AIzaSyAONiK1AbeIKizfXbLqQ9lhHJo2zKYDLLA';
 
-function loadScript(src, position, id, setLocation) {
+function loadScript(src, position, id) {
   if (!position) {
     return;
   }
@@ -27,7 +27,7 @@ function loadScript(src, position, id, setLocation) {
 const autocompleteService = { current: null };
 
 export default function GoogleMaps({setLocation, setLat, setLng, location}) {
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState(location ? location: null);
   const [inputValue, setInputValue] = React.useState('');
   const [options, setOptions] = React.useState([]);
   const loaded = React.useRef(false);
@@ -133,7 +133,7 @@ export default function GoogleMaps({setLocation, setLat, setLng, location}) {
         setInputValue(newInputValue);
       }}
       renderInput={(params) => (
-        <TextField {...params} label="Add a location" fullWidth variant="standard" defaultValue={location} />
+        <TextField {...params} label="Add a location" fullWidth variant="standard" />
       )}
       renderOption={(props, option) => {
         const matches =
