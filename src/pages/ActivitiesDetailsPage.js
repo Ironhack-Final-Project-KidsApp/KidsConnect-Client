@@ -41,8 +41,8 @@ const ActivitiesDetailsPage = () => {
   }
 
   return (
-    <div>
-    <Container maxWidth="xl" style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+    <div >
+    <Container maxWidth="xl" style={{display:'flex', flexDirection:'column', alignItems:'center'}} >
     <Card sx={{ width: '90%', margin:8, background: "#c0c1c014", '@media (min-width: 768px)': { width: '60%' }  }}>
     
     {activity && (

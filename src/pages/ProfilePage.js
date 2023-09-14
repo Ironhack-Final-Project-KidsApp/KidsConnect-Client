@@ -142,14 +142,23 @@ function ProfilePage() {
             </CardContent>
           </Card>
 
-          <Typography sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} gutterBottom variant="h4" component="div">
+          <Typography 
+            sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} 
+            padding='30px 0 20px'
+            gutterBottom 
+            variant="h4" 
+            component="div">
             {user.name}'s Created Activities
           </Typography>
-          <Grid container spacing={2} justifyContent="flex-start" sx={{ margin: '2rem' }}>
+          <Grid container spacing={2} justifyContent="center" alignItems='flex-start' 
+          // sx={{ margin: '2rem' }}
+          >
             {userActivity ? (
               userActivity.length > 0 ? (
                 userActivity.map((item) => (
-                  <Grid item key={item._id} xs={12} sm={6} md={4} lg={3}>
+                  <Grid item key={item._id} 
+                  // xs={12} sm={6} md={4} lg={3}
+                  >
                     <ActivityCard activity={item} />
                   </Grid>
                 ))
@@ -163,14 +172,23 @@ function ProfilePage() {
             )}
           </Grid>
 
-          <Typography sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} gutterBottom variant="h4" component="div">
+          <Typography 
+            sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} 
+            gutterBottom variant="h4" 
+            component="div"
+            padding='30px 0 20px'
+            >
             {user.name}'s Favorites
           </Typography>
-          <Grid container spacing={2} justifyContent="flex-start" sx={{ margin: '2rem' }}>
+          <Grid container spacing={2} justifyContent="center" 
+          // sx={{ margin: '2rem' }}
+          >
             {userProfile.favorite ? (
               userProfile.favorite.length > 0 ? (
                 userProfile.favorite.map((item) => (
-                  <Grid item key={item._id} xs={12} sm={6} md={4} lg={3}>
+                  <Grid item key={item._id}
+                  // xs={12} sm={6} md={4} lg={3}
+                  >
                     <ActivityCard activity={item} />
                   </Grid>
                 ))

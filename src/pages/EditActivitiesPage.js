@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, Paper, TextField, Typography, styled } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CheckIcon from '@mui/icons-material/Check';
+import Autofillgoogle from "../components/CreateActivity/Autofillgoogle";
 
 const EditActivitiesPage = () => {
     const navigate = useNavigate();
@@ -13,6 +14,9 @@ const EditActivitiesPage = () => {
     const {user} = authContext;
     const [activity, setActivity] = useState({author: user._id})
     const [errorMessage, setError] = useState(null)
+    const [location, setLocation] = useState(null)
+    const [lat, setLat] = useState(null);
+    const [lng, setLng] = useState(null)
 
     const VisuallyHiddenInput = styled('input')`
     clip: rect(0 0 0 0);
@@ -43,12 +47,30 @@ const EditActivitiesPage = () => {
           });
       };
 
+    
     const handleSubmit = e =>{
+        const storeActivity = activity;
+        storeActivity.location = location;
+        storeActivity.lat = lat;
+        storeActivity.lng = lng;
+        
         e.preventDefault();
-        activityService.updateActivity(idactivity, activity)
+        activityService.updateActivity(idactivity, storeActivity)
             .then(response => navigate(`/profile/${user._id}`))
             .catch(err=>setError(err.message));
+
+        // e.preventDefault();
+        // activityService.createActivity(storeActivity)
+        //   .then(response => navigate(`/profile/${user._id}`))
+        //   .catch(err=>setError(err.message));
+        console.log(storeActivity)
     }
+    // const handleSubmit = e =>{
+    //     e.preventDefault();
+    //     activityService.updateActivity(idactivity, activity)
+    //         .then(response => navigate(`/profile/${user._id}`))
+    //         .catch(err=>setError(err.message));
+    // }
 
     useEffect(()=>{
         activityService.getActivity(idactivity)
@@ -118,16 +140,7 @@ const EditActivitiesPage = () => {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField
-                        id="location"
-                        name="location"
-                        label="Location"
-                        fullWidth
-                        required
-                        variant="standard"
-                        defaultValue={activity.location}
-                        onChange={e=>setActivity({...activity, location: e.target.value})}
-                    />
+                    <Autofillgoogle setLocation={setLocation} setLat={setLat} setLng={setLng} location={activity.location} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
