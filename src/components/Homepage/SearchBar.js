@@ -9,6 +9,7 @@ function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState({title: '', stroller: '', age:0, venuetype: '', priced:''});
   const [searchDB] = useState(props.activitiesList);
   const [advanceSearch, setAdvance] = useState(false);
+  const [mapSearch, setMap] = useState(false)
   const { setActivitiesList } = props;
 
   const handleSearchChange = useCallback((item) => {
@@ -30,40 +31,52 @@ function SearchBar(props) {
 
   return (
     <div>
-      <Container sx={{paddingBottom:'20px'}}>
+      {/* <Container sx={{paddingBottom:'20px'}}>
         <GoogleMaps activity={props.activitiesList.filter(fil => fil.lat).map(e=>{return {lat:e.lat, lng:e.lng, _id:e._id}})} />
-      </Container>
-        <Container>
-          <TextField
-            id="outlined-search" 
-            label="Search field" 
-            type="search" 
-            fullWidth
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-            }}
-            onChange={(e) => setSearchTerm({...searchTerm, title: e.target.value})}
-          />
-          <Accordion onChange={()=>setAdvance(!advanceSearch)}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography>Advance Search</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <AdvanceSearch
-                setSearchTerm={setSearchTerm}
-                searchTerm={searchTerm}
-              />
-            </AccordionDetails>
-          </Accordion>
-        </Container>      
+      </Container> */}
+      <Container>
+        <TextField
+          id="outlined-search" 
+          label="Search field" 
+          type="search" 
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search />
+              </InputAdornment>
+            ),
+          }}
+          onChange={(e) => setSearchTerm({...searchTerm, title: e.target.value})}
+        />
+        <Accordion onChange={()=>setMap(!mapSearch)}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography>See on Google Maps</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <GoogleMaps activity={props.activitiesList.filter(fil => fil.lat).map(e=>{return {lat:e.lat, lng:e.lng, _id:e._id}})} />
+          </AccordionDetails>
+        </Accordion>
+        <Accordion onChange={()=>setAdvance(!advanceSearch)}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography>Advance Search</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <AdvanceSearch
+              setSearchTerm={setSearchTerm}
+              searchTerm={searchTerm}
+            />
+          </AccordionDetails>
+        </Accordion>
+      </Container>      
     </div>
   );
 }
