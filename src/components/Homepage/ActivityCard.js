@@ -10,7 +10,7 @@ function ActivityCard({ activity }) {
   const authorName = activity?.author?.name || 'Unknown Author';
 
   return (
-    <Card sx={{ width: 250, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <Card sx={{ width: 250, minHeight: '372px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
       <CardActionArea>
         <CardMedia
           component="img"

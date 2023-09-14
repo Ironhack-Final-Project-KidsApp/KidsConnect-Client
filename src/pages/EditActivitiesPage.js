@@ -118,16 +118,7 @@ const EditActivitiesPage = () => {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField
-                        id="location"
-                        name="location"
-                        label="Location"
-                        fullWidth
-                        required
-                        variant="standard"
-                        defaultValue={activity.location}
-                        onChange={e=>setActivity({...activity, location: e.target.value})}
-                    />
+                    <Autofillgoogle setLocation={setLocation} setLat={setLat} setLng={setLng} location={activity.location} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
