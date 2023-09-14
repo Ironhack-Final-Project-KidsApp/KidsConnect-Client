@@ -2,8 +2,7 @@
     /* padding: 10px; */
     max-width: 100%;
     text-align: center;
-    /* background: url('../assets/background.jpg'); */
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
 }
 
 .Homepage img{
@@ -12,12 +11,22 @@
 
 #home-usertips{
     padding: 20px 0;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 #home-getstarted{
     padding: 20px 0;
+    background-color:  rgba(255, 255, 255, 0.8);
 }
 
 #home-logo{
     padding: 25px 0;
+    background-color:  rgba(255, 255, 255, 0.8);
 }
+
+.app-background {
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+

@@ -2,7 +2,7 @@ import { Container, Stack, Typography } from "@mui/material";
 
 const HomeDescription = () => {
     return (
-        <section>
+        <section style={{backgroundColor: "rgba(255, 255, 255, 0.8)"}}>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
             spacing={{ xs: 1, sm: 2, md: 4 }}

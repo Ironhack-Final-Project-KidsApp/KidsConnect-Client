@@ -6,6 +6,7 @@ import { Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, Paper, T
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CheckIcon from '@mui/icons-material/Check';
 import Autofillgoogle from "../components/CreateActivity/Autofillgoogle";
+import './Homepage.css'
 
 const EditActivitiesPage = () => {
     const navigate = useNavigate();
@@ -58,19 +59,9 @@ const EditActivitiesPage = () => {
         activityService.updateActivity(idactivity, storeActivity)
             .then(response => navigate(`/profile/${user._id}`))
             .catch(err=>setError(err.message));
-
-        // e.preventDefault();
-        // activityService.createActivity(storeActivity)
-        //   .then(response => navigate(`/profile/${user._id}`))
-        //   .catch(err=>setError(err.message));
         console.log(storeActivity)
     }
-    // const handleSubmit = e =>{
-    //     e.preventDefault();
-    //     activityService.updateActivity(idactivity, activity)
-    //         .then(response => navigate(`/profile/${user._id}`))
-    //         .catch(err=>setError(err.message));
-    // }
+
 
     useEffect(()=>{
         activityService.getActivity(idactivity)
@@ -78,6 +69,7 @@ const EditActivitiesPage = () => {
     },[idactivity])
 
     return (
+    <div className="app-background">
     <Container component="form" maxWidth="sm" sx={{ mb: 4 }} onSubmit={handleSubmit}>
         {activity.title &&
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
@@ -199,6 +191,7 @@ const EditActivitiesPage = () => {
             </Paper>
         }
     </Container>
+    </div>
     );
 }
  

@@ -6,6 +6,7 @@ import { Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, Paper, T
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CheckIcon from '@mui/icons-material/Check';
 import Autofillgoogle from "../components/CreateActivity/Autofillgoogle";
+import './Homepage.css'
 
 
 const CreateActivityPage = () => {
@@ -61,6 +62,7 @@ const CreateActivityPage = () => {
   }
 
   return (
+    <div className="app-background">
     <Container component="form" maxWidth="sm" sx={{ mb: 4 }} onSubmit={handleSubmit}>
     <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
       <Typography component="h1" variant="h4" align="center">
@@ -179,6 +181,7 @@ const CreateActivityPage = () => {
       </Button>
     </Paper>
   </Container>
+  </div>
   );
 }
 

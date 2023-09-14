@@ -13,6 +13,7 @@ import CardMedia from '@mui/material/CardMedia';
 import { Chip, Grid, Box, Button } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import CircularProgress from '@mui/material/CircularProgress';
+import './Homepage.css';
 
 
 const ActivitiesDetailsPage = () => {
@@ -41,9 +42,9 @@ const ActivitiesDetailsPage = () => {
   }
 
   return (
-    <div >
+    <div className="app-background">
     <Container maxWidth="xl" style={{display:'flex', flexDirection:'column', alignItems:'center'}} >
-    <Card sx={{ width: '90%', margin:8, background: "#c0c1c014", '@media (min-width: 768px)': { width: '60%' }  }}>
+    <Card sx={{ width: '90%', margin:8, background: "rgba(255, 255, 255, 1)", '@media (min-width: 768px)': { width: '70%' }  }}>
     
     {activity && (
       <>

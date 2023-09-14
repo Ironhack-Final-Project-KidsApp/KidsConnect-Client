@@ -47,5 +47,3 @@ return (
 export default CarouselHome;
 
 
-
-

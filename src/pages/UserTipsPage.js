@@ -1,10 +1,15 @@
 import { Container, Divider, Grid, Typography } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
+import './Homepage.css';
+import Card from '@mui/material/Card';
 
 function UserTips() {
     return(
-        <div>
+        <div className="app-background">
+        <Container maxWidth="xl" style={{display:'flex', flexDirection:'column', alignItems:'center'}} >
+    <Card sx={{ width: '90%', margin:8, background: "rgba(255, 255, 255, 1)", '@media (min-width: 768px)': { width: '60%' }  }}>
+    
             <Container sx={{padding:'30px 10px'}}>
                 <h1>KidsConnect User Tips!</h1>
             </Container>
@@ -114,7 +119,8 @@ function UserTips() {
                 </Grid>
             </Grid>
             
-            
+            </Card>
+      </Container>
         </div>
     )
 }
