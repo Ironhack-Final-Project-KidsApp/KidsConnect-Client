@@ -13,6 +13,9 @@ const EditActivitiesPage = () => {
     const {user} = authContext;
     const [activity, setActivity] = useState({author: user._id})
     const [errorMessage, setError] = useState(null)
+    const [location, setLocation] = useState(null)
+    const [lat, setLat] = useState(null);
+    const [lng, setLng] = useState(null)
 
     const VisuallyHiddenInput = styled('input')`
     clip: rect(0 0 0 0);
@@ -43,12 +46,29 @@ const EditActivitiesPage = () => {
           });
       };
 
+    
     const handleSubmit = e =>{
-        e.preventDefault();
-        activityService.updateActivity(idactivity, activity)
+        const storeActivity = activity;
+        storeActivity.location = location;
+        storeActivity.lat = lat;
+        storeActivity.lng = lng;
+    
+        activityService.updateActivity(idactivity, storeActivity)
             .then(response => navigate(`/profile/${user._id}`))
             .catch(err=>setError(err.message));
+
+        // e.preventDefault();
+        // activityService.createActivity(storeActivity)
+        //   .then(response => navigate(`/profile/${user._id}`))
+        //   .catch(err=>setError(err.message));
+        console.log(storeActivity)
     }
+    // const handleSubmit = e =>{
+    //     e.preventDefault();
+    //     activityService.updateActivity(idactivity, activity)
+    //         .then(response => navigate(`/profile/${user._id}`))
+    //         .catch(err=>setError(err.message));
+    // }
 
     useEffect(()=>{
         activityService.getActivity(idactivity)
