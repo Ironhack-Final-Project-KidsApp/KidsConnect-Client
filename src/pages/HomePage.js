@@ -17,7 +17,7 @@ function HomePage() {
     <div>    
       {isLoggedIn ? (
         <div>
-        <h3 style={{ textAlign: 'center', marginTop: '3%' }}>Welcome {user?.name}</h3>
+        <h3 style={{ textAlign: 'center', paddingTop: '3%' }}>Welcome {user?.name}</h3>
         <br/>
         <AllActivitiesList />
         </div>

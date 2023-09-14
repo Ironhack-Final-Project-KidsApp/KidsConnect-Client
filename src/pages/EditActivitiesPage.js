@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, Paper, TextField, Typography, styled } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CheckIcon from '@mui/icons-material/Check';
+import Autofillgoogle from "../components/CreateActivity/Autofillgoogle";
 
 const EditActivitiesPage = () => {
     const navigate = useNavigate();
@@ -52,7 +53,8 @@ const EditActivitiesPage = () => {
         storeActivity.location = location;
         storeActivity.lat = lat;
         storeActivity.lng = lng;
-    
+        
+        e.preventDefault();
         activityService.updateActivity(idactivity, storeActivity)
             .then(response => navigate(`/profile/${user._id}`))
             .catch(err=>setError(err.message));
