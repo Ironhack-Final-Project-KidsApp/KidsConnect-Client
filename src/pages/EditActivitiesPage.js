@@ -186,7 +186,7 @@ const EditActivitiesPage = () => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
             >
-                Create Activity
+                Update Activity
             </Button>
             </Paper>
         }

@@ -64,9 +64,9 @@ const ActivitiesDetailsPage = () => {
           component="img"
           alt="activity img"
           height="300"
-          width="auto"
+          // width="auto"
           image={activity?.activityImage}
-          style={{ objectFit: 'fill', maxWidth: '100%' }}
+          style={{ objectFit: 'cover', maxWidth: '100%' }}
           sx={{ '@media (min-width: 768px)': { height: 300, width: 'auto' },}}/>
       </Box>
 
@@ -91,7 +91,7 @@ const ActivitiesDetailsPage = () => {
       </CardContent>  
 
     <CardContent>
-      <Divider Divider textAlign="center" style={{width:'100%'}}>
+      <Divider textAlign="center" style={{width:'100%'}}>
         DESCRIPTION
       </Divider>
       <Typography variant="body2" style={{textAlign: 'center'}}>

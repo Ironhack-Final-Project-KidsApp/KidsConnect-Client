@@ -34,7 +34,7 @@ function HomePage() {
             <Divider variant="middle" sx={{ borderBottomWidth: 5 }} />
             <h2 style={{width:'100%', margin:'auto'}}>The ultimate app for kids activities.</h2>
           </section>
-          <section style={{maxWidth:'500px', margin:'auto'}}>
+          <section style={{maxWidth:'100%', margin:'auto'}}>
             <CarouselHome/>
           </section>
           <Divider variant="middle" sx={{ borderBottomWidth: 5, paddingTop: 5 }} />
