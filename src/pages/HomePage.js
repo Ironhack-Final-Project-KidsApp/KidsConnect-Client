@@ -19,7 +19,7 @@ function HomePage() {
     <div className="app-background">    
       {isLoggedIn ? (
         <Container maxWidth="xl" style={{display:'flex', flexDirection:'column', alignItems:'center'}} >
-          <Card sx={{ width: '90%', margin:8, background: "rgba(255, 255, 255, 1)", '@media (min-width: 768px)': { width: '90%' }  }}>
+          <Card sx={{ paddingBottom:'20px', width: '90%', margin:8, background: "rgba(255, 255, 255, 1)", '@media (min-width: 768px)': { width: '90%' }  }}>
             <h3 style={{ textAlign: 'center', paddingTop: '3%' }}>Welcome {user?.name}</h3>
             <br/>
             <AllActivitiesList />
