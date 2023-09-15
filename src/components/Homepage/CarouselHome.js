@@ -1,5 +1,5 @@
 import { Paper } from '@mui/material'
-import KidsParkImg from '../../assets/kids-park.jpg';
+import KidsParkImg from '../../assets/fullsize_drachenspiel1.jpg';
 import KidsMuseumImg from '../../assets/kids-museum.jpg';
 import KidsJumpImg from '../../assets/kids-jump.jpg';
 import Carousel from 'react-material-ui-carousel';
@@ -25,7 +25,7 @@ const Item = (props) =>
 {
     return (
         <Paper>
-          <div style={{backgroundImage:`url(${props.item.image})`, backgroundSize:'cover', backgroundPosition:'center', color:'white', padding:'150px 0', maxWidth:'500px'}}>
+          <div style={{backgroundImage:`url(${props.item.image})`, backgroundSize:'cover', backgroundPosition:'center', color:'white', padding:'230px 0', maxWidth:'100%', height:'500px'}}>
           <h2>{props.item.name}</h2>
           </div>       
         </Paper>
@@ -45,7 +45,5 @@ return (
 }
 
 export default CarouselHome;
-
-
 
 

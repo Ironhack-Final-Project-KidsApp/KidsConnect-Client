@@ -10,19 +10,19 @@ import { debounce } from '@mui/material/utils';
 
 // This key was created specifically for the demo in mui.com.
 // You need to create a new one for your application.
-const GOOGLE_MAPS_API_KEY = 'AIzaSyAONiK1AbeIKizfXbLqQ9lhHJo2zKYDLLA';
+// const GOOGLE_MAPS_API_KEY = 'AIzaSyAONiK1AbeIKizfXbLqQ9lhHJo2zKYDLLA';
 
-function loadScript(src, position, id) {
-  if (!position) {
-    return;
-  }
+// function loadScript(src, position, id) {
+//   if (!position) {
+//     return;
+//   }
 
-  const script = document.createElement('script');
-  script.setAttribute('async', '');
-  script.setAttribute('id', id);
-  script.src = src;
-  position.appendChild(script);
-}
+//   const script = document.createElement('script');
+//   script.setAttribute('async', '');
+//   script.setAttribute('id', id);
+//   script.src = src;
+//   position.appendChild(script);
+// }
 
 const autocompleteService = { current: null };
 
@@ -30,7 +30,7 @@ export default function GoogleMaps({setLocation, setLat, setLng, location}) {
   const [value, setValue] = React.useState(location ? location: null);
   const [inputValue, setInputValue] = React.useState('');
   const [options, setOptions] = React.useState([]);
-  const loaded = React.useRef(false);
+  // const loaded = React.useRef(false);
 
   // if (typeof window !== 'undefined' && !loaded.current) {
   //   if (!document.querySelector('#google-maps')) {

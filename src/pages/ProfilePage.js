@@ -13,6 +13,7 @@ import Grid from '@mui/material/Grid';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import './Homepage.css'
 
 function ProfilePage() {
   const authContext = useContext(AuthContext);
@@ -64,6 +65,7 @@ function ProfilePage() {
   }, [user._id])
 
   return (
+    <div className="app-background">
     <Container maxWidth="xl" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px', marginBottom: '20px' }}>
       {errorMessage && <p>{errorMessage}</p>}
       {(!user && (
@@ -72,7 +74,7 @@ function ProfilePage() {
         </Box>
       )) || (
         <>
-          <Card style={{ width: '90%' }}>
+          <Card style={{ width: '70%' }}>
             <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '10px' }}>
               <Typography sx={{ fontWeight: "700", color: "#000000", fontSize: "2rem", textTransform: "uppercase", marginTop: '8px' }} gutterBottom variant="h4" component="div">
                 {user.name}'s Profile
@@ -115,18 +117,18 @@ function ProfilePage() {
                       onChange={(e) => handleFileUpload(e)}
                     />
                     <label htmlFor="raised-button-file">
-                      <Button variant="raised" component="span" sx={{ bgcolor: '#ffbd59' }} startIcon={<AddPhotoAlternateIcon />}>
+                      <Button variant="raised" component="span" sx={{ bgcolor: '##add8e6' }} startIcon={<AddPhotoAlternateIcon />}>
                         Upload Image
                       </Button>
                     </label>
                     <Button
                       variant="outlined"
-                      sx={{ bgcolor: '#ffbd59', ml: 1 }}
+                      sx={{ bgcolor: '#add8e6', ml: 1 }}
                       onClick={() => setShowUpload(!showUpload)}
                     >
                       Cancel Edit
                     </Button>
-                    <Button type="submit" variant="contained" sx={{ bgcolor: '#ffbd59', ml: 1 }}>
+                    <Button type="submit" variant="contained" sx={{ bgcolor: '#add8e6', ml: 1 }}>
                       Save new profile image
                     </Button>
                   </form>
@@ -142,6 +144,7 @@ function ProfilePage() {
             </CardContent>
           </Card>
 
+          <Card sx={{ width: '90%', margin:8, background: "rgba(255, 255, 255, 1)", display:'flex', flexDirection:'column', alignItems:'center', '@media (min-width: 768px)': { width: '70%' } }}>
           <Typography 
             sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} 
             padding='30px 0 20px'
@@ -150,15 +153,11 @@ function ProfilePage() {
             component="div">
             {user.name}'s Created Activities
           </Typography>
-          <Grid container spacing={2} justifyContent="center" alignItems='flex-start' 
-          // sx={{ margin: '2rem' }}
-          >
+          <Grid container spacing={2} justifyContent="center" alignItems='flex-start'>
             {userActivity ? (
               userActivity.length > 0 ? (
                 userActivity.map((item) => (
-                  <Grid item key={item._id} 
-                  // xs={12} sm={6} md={4} lg={3}
-                  >
+                  <Grid item key={item._id}>
                     <ActivityCard activity={item} />
                   </Grid>
                 ))
@@ -180,15 +179,11 @@ function ProfilePage() {
             >
             {user.name}'s Favorites
           </Typography>
-          <Grid container spacing={2} justifyContent="center" 
-          // sx={{ margin: '2rem' }}
-          >
+          <Grid container spacing={2} justifyContent="center">
             {userProfile.favorite ? (
               userProfile.favorite.length > 0 ? (
                 userProfile.favorite.map((item) => (
-                  <Grid item key={item._id}
-                  // xs={12} sm={6} md={4} lg={3}
-                  >
+                  <Grid item key={item._id}>
                     <ActivityCard activity={item} />
                   </Grid>
                 ))
@@ -201,9 +196,11 @@ function ProfilePage() {
               </Box>
             )}
           </Grid>
+          </Card>
         </>
       )}
     </Container>
+    </div>
   );
 }
 
