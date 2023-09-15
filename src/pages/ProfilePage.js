@@ -144,7 +144,7 @@ function ProfilePage() {
             </CardContent>
           </Card>
 
-          <Card sx={{ width: '90%', margin:8, background: "rgba(255, 255, 255, 1)", display:'flex', flexDirection:'column', alignItems:'center', '@media (min-width: 768px)': { width: '70%' } }}>
+          <Card sx={{ paddingBottom:'20px', width: '90%', margin:8, background: "rgba(255, 255, 255, 1)", display:'flex', flexDirection:'column', alignItems:'center', '@media (min-width: 768px)': { width: '70%' } }}>
           <Typography 
             sx={{ fontWeight: "700", color: "#000000", fontSize: "1.5rem", textTransform: "uppercase", marginTop: '16px' }} 
             padding='30px 0 20px'
