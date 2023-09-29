@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../context/auth.context";
 import AllActivitiesList from "./AllActivitiesList";
 import logo from'../assets/logo2-removebg-preview.png'
@@ -15,6 +15,14 @@ function HomePage() {
   const { isLoggedIn, user } = authContext;
   const navigate = useNavigate();
 
+  useEffect(
+    ()=>{
+      if(!isLoggedIn){
+      authService.startServer()
+        .then(response=> console.log(response)
+      }
+    },[])
+  
   return (
     <div className="app-background">    
       {isLoggedIn ? (
