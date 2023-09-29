@@ -35,6 +35,10 @@ class AuthService {
     
     updateUser = (updatedUser) => {
       return this.api.put("/auth/users", updatedUser);
+    };
+
+    startServer = () => {
+      return this.api.get('/api');
     }
 }
 

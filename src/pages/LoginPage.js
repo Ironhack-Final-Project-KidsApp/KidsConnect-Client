@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import authService from "../services/auth.services";
@@ -28,6 +28,9 @@ function LoginPage() {
             .catch((err) => {const errorMessage = err?.response?.data?.message ?? 'Internal error' 
             setErrorMessage(errorMessage)})
     }
+
+    useEffect(()=>{authService.startServer()},[])
+    
     return(
         <Container component="form" onSubmit={handleSubmit} maxWidth="xs">
         <CssBaseline />
