@@ -29,7 +29,7 @@ function LoginPage() {
             setErrorMessage(errorMessage)})
     }
 
-    useEffect(()=>{authService.startServer()},[])
+    //useEffect(()=>{authService.startServer()},[])
     
     return(
         <Container component="form" onSubmit={handleSubmit} maxWidth="xs">
