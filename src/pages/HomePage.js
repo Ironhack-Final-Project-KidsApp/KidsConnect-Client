@@ -9,6 +9,7 @@ import CarouselHome from "../components/Homepage/CarouselHome";
 import HomeDescription from "../components/Homepage/HomeDescription";
 import { Container } from '@mui/material';
 import Card from '@mui/material/Card';
+import authService from "../services/auth.services";
 
 function HomePage() {
   const authContext = useContext(AuthContext);
@@ -19,9 +20,9 @@ function HomePage() {
     ()=>{
       if(!isLoggedIn){
       authService.startServer()
-        .then(response=> console.log(response)
+        .then(response=> console.log(response))
       }
-    },[])
+    },[isLoggedIn])
   
   return (
     <div className="app-background">    
