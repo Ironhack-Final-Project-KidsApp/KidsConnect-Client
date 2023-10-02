@@ -1,8 +1,9 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import authService from "../services/auth.services";
-import { Avatar, Box, Button, Container, CssBaseline, Grid, TextField, Typography } from "@mui/material";
+import { green } from '@mui/material/colors';
+import { Avatar, Box, Button, CircularProgress, Container, CssBaseline, Grid, TextField, Typography } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 
@@ -11,11 +12,13 @@ function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(undefined);
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate();
     const { storeToken, authenticateUser } = useContext(AuthContext);
     
     const handleSubmit = (e) => {
+      setLoading(true);
         e.preventDefault()
         const requestBody = { email, password };
         authService
@@ -72,14 +75,34 @@ function LoginPage() {
               autoComplete="current-password"
               onChange={e=>setPassword(e.target.value)}
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Log In
-            </Button>
+            <Box sx={{ position: 'relative' }}>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                disabled={loading}
+              >
+                Log In
+              </Button>
+              {loading && (
+              <CircularProgress
+                size={24}
+                sx={{
+                  color: green[500],
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  marginTop: '-12px',
+                  marginLeft: '-12px',
+                }}
+              />
+              )}
+            </Box>
+
+
+
+
             <Grid container>
               <Grid item xs>
               </Grid>

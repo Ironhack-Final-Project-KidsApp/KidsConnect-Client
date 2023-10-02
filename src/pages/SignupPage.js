@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../services/auth.services";
-import { Avatar, Box, Button, Container, CssBaseline, Grid, TextField, Typography } from "@mui/material";
+import { green } from '@mui/material/colors';
+import { Avatar, Box, Button, CircularProgress, Container, CssBaseline, Grid, TextField, Typography } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 function SignupPage(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
+    const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState(undefined);
 
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        setLoading(true);
         const requestBody = { email, password, name };
         authService
             .signup(requestBody)
@@ -80,14 +83,30 @@ function SignupPage(props) {
                 />
               </Grid>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign Up
-            </Button>
+            <Box sx={{ position: 'relative' }}>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                disabled={loading}
+              >
+                Sign Up
+              </Button>
+              {loading && (
+              <CircularProgress
+                size={24}
+                sx={{
+                  color: green[500],
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  marginTop: '-12px',
+                  marginLeft: '-12px',
+                }}
+              />
+              )}
+            </Box>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link to="/login" variant="body2">
